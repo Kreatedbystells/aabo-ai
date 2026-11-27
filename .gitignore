@@ -1,0 +1,20 @@
+# Research artefacts that must not be pushed or deployed
+ml/
+data/
+templates/
+*.docx
+ch*.md
+*.log
+__pycache__/
+.vercel/
+.DS_Store
+artifacts/figs/
+artifacts/ablation_all_16.joblib
+artifacts/ablation_without_path_length.joblib
+artifacts/model_rf.joblib
+artifacts/model_rf_v2.joblib
+artifacts/model_lr.joblib
+artifacts/scaler_lr.joblib
+artifacts/scans_prev_*.db
+.no-commit*.part
+.vercel

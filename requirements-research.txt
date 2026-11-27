@@ -1,0 +1,9 @@
+# Dependencies of the research pipeline and document build, NOT of the deployed
+# service. Kept separate so the Vercel function bundle stays small: pandas and
+# matplotlib together add ~120 MB that the API never touches (train.py imports
+# them inside main(), not at module level).
+-r requirements.txt
+pandas
+matplotlib
+python-docx
+uvicorn

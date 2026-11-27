@@ -1,0 +1,217 @@
+[
+  {
+    "domain": "addons.mozilla.org",
+    "fp_rate": 100.0,
+    "n": 40
+  },
+  {
+    "domain": "dashboard.hcaptcha.com",
+    "fp_rate": 100.0,
+    "n": 1
+  },
+  {
+    "domain": "ex.co",
+    "fp_rate": 100.0,
+    "n": 40
+  },
+  {
+    "domain": "he.net",
+    "fp_rate": 100.0,
+    "n": 16
+  },
+  {
+    "domain": "ipv6.he.net",
+    "fp_rate": 100.0,
+    "n": 1
+  },
+  {
+    "domain": "people-companion.public.onecdn.static.microsoft",
+    "fp_rate": 100.0,
+    "n": 1
+  },
+  {
+    "domain": "explore.microsoft.com",
+    "fp_rate": 97.5,
+    "n": 40
+  },
+  {
+    "domain": "nexx360.io",
+    "fp_rate": 97.5,
+    "n": 40
+  },
+  {
+    "domain": "www.box.com",
+    "fp_rate": 97.5,
+    "n": 40
+  },
+  {
+    "domain": "bootstrapcdn.com",
+    "fp_rate": 90.9090909090909,
+    "n": 11
+  },
+  {
+    "domain": "shop.app",
+    "fp_rate": 90.0,
+    "n": 40
+  },
+  {
+    "domain": "analytics.twitter.com",
+    "fp_rate": 66.66666666666667,
+    "n": 3
+  },
+  {
+    "domain": "workspace.google.com",
+    "fp_rate": 63.41463414634146,
+    "n": 41
+  },
+  {
+    "domain": "www.bootstrapcdn.com",
+    "fp_rate": 62.5,
+    "n": 8
+  },
+  {
+    "domain": "www.siriusxm.com",
+    "fp_rate": 62.5,
+    "n": 40
+  },
+  {
+    "domain": "userreport.com",
+    "fp_rate": 60.0,
+    "n": 40
+  },
+  {
+    "domain": "ampproject.org",
+    "fp_rate": 58.97435897435897,
+    "n": 39
+  },
+  {
+    "domain": "cloudinary.com",
+    "fp_rate": 55.0,
+    "n": 40
+  },
+  {
+    "domain": "www.moengage.com",
+    "fp_rate": 52.5,
+    "n": 40
+  },
+  {
+    "domain": "www.tenable.com",
+    "fp_rate": 50.0,
+    "n": 40
+  },
+  {
+    "domain": "copper6.com",
+    "fp_rate": 44.44444444444444,
+    "n": 9
+  },
+  {
+    "domain": "www.shopify.com",
+    "fp_rate": 42.5,
+    "n": 40
+  },
+  {
+    "domain": "hcaptcha.com",
+    "fp_rate": 37.93103448275862,
+    "n": 29
+  },
+  {
+    "domain": "www.adswizz.com",
+    "fp_rate": 37.5,
+    "n": 40
+  },
+  {
+    "domain": "www.walmart.com",
+    "fp_rate": 32.5,
+    "n": 40
+  },
+  {
+    "domain": "www.revenuecat.com",
+    "fp_rate": 30.0,
+    "n": 40
+  },
+  {
+    "domain": "www.rtbhouse.com",
+    "fp_rate": 30.0,
+    "n": 40
+  },
+  {
+    "domain": "www.hcaptcha.com",
+    "fp_rate": 29.26829268292683,
+    "n": 41
+  },
+  {
+    "domain": "videoamp.com",
+    "fp_rate": 20.0,
+    "n": 40
+  },
+  {
+    "domain": "www.tizen.org",
+    "fp_rate": 20.0,
+    "n": 40
+  },
+  {
+    "domain": "iterable.com",
+    "fp_rate": 15.0,
+    "n": 40
+  },
+  {
+    "domain": "www.espressif.com",
+    "fp_rate": 15.0,
+    "n": 40
+  },
+  {
+    "domain": "jwplayer.com",
+    "fp_rate": 12.5,
+    "n": 40
+  },
+  {
+    "domain": "www.dropbox.com",
+    "fp_rate": 10.0,
+    "n": 40
+  },
+  {
+    "domain": "www.zendesk.com",
+    "fp_rate": 7.5,
+    "n": 40
+  },
+  {
+    "domain": "celtra.com",
+    "fp_rate": 2.5,
+    "n": 40
+  },
+  {
+    "domain": "www.cookiebot.com",
+    "fp_rate": 2.5,
+    "n": 40
+  },
+  {
+    "domain": "www.forter.com",
+    "fp_rate": 2.5,
+    "n": 40
+  },
+  {
+    "domain": "docs.hcaptcha.com",
+    "fp_rate": 0.0,
+    "n": 7
+  },
+  {
+    "domain": "www.firefox.com",
+    "fp_rate": 0.0,
+    "n": 40
+  },
+  {
+    "domain": "www.mogujie.com",
+    "fp_rate": 0.0,
+    "n": 1
+  },
+  {
+    "domain": "www.samsung.com",
+    "fp_rate": 0.0,
+    "n": 40
+  },
+  {
+    "domain": "www.trendmicro.com",
+    "fp_rate": 0.0,
+    "n": 40
+  }
+]

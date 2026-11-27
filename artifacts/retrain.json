@@ -1,0 +1,1313 @@
+{
+  "meta": {
+    "seed": 42,
+    "threshold": 0.5,
+    "phiusiil_rows": 235370,
+    "legit_corpus_urls": 6929,
+    "legit_train_urls": 17705,
+    "legit_collected_train_urls": 5561,
+    "legit_shape_variant_urls": 12144,
+    "legit_holdout_urls": 1368,
+    "legit_domains_total": 194,
+    "legit_domains_held_out": 39,
+    "allowlist_domains": {
+      "top10k": 2024,
+      "top100k": 15989,
+      "ng": 99,
+      "deployed": 16087
+    },
+    "nigerian_domain_ranks": {
+      "gtbank.com": 365782,
+      "paystack.com": 432967,
+      "zenithbank.com": 527015,
+      "firstbanknigeria.com": 505608,
+      "jumia.com.ng": 212517
+    },
+    "nigerian_domains_in_top100k": [],
+    "field_test_size": 7368
+  },
+  "models": {
+    "baseline": {
+      "phiusiil_test": {
+        "model_only": {
+          "n": 47074,
+          "tn": 26615,
+          "fp": 355,
+          "fn": 1177,
+          "tp": 18927,
+          "accuracy": 96.75,
+          "false_positive_rate": 1.32,
+          "recall": 94.15,
+          "precision": 98.16,
+          "f1": 96.11
+        },
+        "with_reputation_layer": {
+          "n": 47074,
+          "tn": 26615,
+          "fp": 355,
+          "fn": 1179,
+          "tp": 18925,
+          "accuracy": 96.74,
+          "false_positive_rate": 1.32,
+          "recall": 94.14,
+          "precision": 98.16,
+          "f1": 96.11
+        },
+        "verdicts_overridden": 2
+      },
+      "field_all": {
+        "model_only": {
+          "n": 7368,
+          "tn": 4935,
+          "fp": 1433,
+          "fn": 65,
+          "tp": 935,
+          "accuracy": 79.67,
+          "false_positive_rate": 22.5,
+          "recall": 93.5,
+          "precision": 39.48,
+          "f1": 55.52
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6223,
+          "fp": 145,
+          "fn": 66,
+          "tp": 934,
+          "accuracy": 97.14,
+          "false_positive_rate": 2.28,
+          "recall": 93.4,
+          "precision": 86.56,
+          "f1": 89.85
+        },
+        "verdicts_overridden": 1289
+      },
+      "field_all_top100k": {
+        "model_only": {
+          "n": 7368,
+          "tn": 4935,
+          "fp": 1433,
+          "fn": 65,
+          "tp": 935,
+          "accuracy": 79.67,
+          "false_positive_rate": 22.5,
+          "recall": 93.5,
+          "precision": 39.48,
+          "f1": 55.52
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6224,
+          "fp": 144,
+          "fn": 73,
+          "tp": 927,
+          "accuracy": 97.05,
+          "false_positive_rate": 2.26,
+          "recall": 92.7,
+          "precision": 86.55,
+          "f1": 89.52
+        },
+        "verdicts_overridden": 1297
+      },
+      "field_legit_with_paths": {
+        "model_only": {
+          "n": 1368,
+          "tn": 0,
+          "fp": 1368,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 0.0,
+          "false_positive_rate": 100.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 1368,
+          "tn": 1288,
+          "fp": 80,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 94.15,
+          "false_positive_rate": 5.85,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 1288
+      },
+      "field_legit_bare": {
+        "model_only": {
+          "n": 5000,
+          "tn": 4935,
+          "fp": 65,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 98.7,
+          "false_positive_rate": 1.3,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 5000,
+          "tn": 4936,
+          "fp": 64,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 98.72,
+          "false_positive_rate": 1.28,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 1
+      },
+      "field_phishing": {
+        "model_only": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 65,
+          "tp": 935,
+          "accuracy": 93.5,
+          "false_positive_rate": 0.0,
+          "recall": 93.5,
+          "precision": 100.0,
+          "f1": 96.64
+        },
+        "with_reputation_layer": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 65,
+          "tp": 935,
+          "accuracy": 93.5,
+          "false_positive_rate": 0.0,
+          "recall": 93.5,
+          "precision": 100.0,
+          "f1": 96.64
+        },
+        "verdicts_overridden": 0
+      },
+      "field_phishing_top100k": {
+        "model_only": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 65,
+          "tp": 935,
+          "accuracy": 93.5,
+          "false_positive_rate": 0.0,
+          "recall": 93.5,
+          "precision": 100.0,
+          "f1": 96.64
+        },
+        "with_reputation_layer": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 73,
+          "tp": 927,
+          "accuracy": 92.7,
+          "false_positive_rate": 0.0,
+          "recall": 92.7,
+          "precision": 100.0,
+          "f1": 96.21
+        },
+        "verdicts_overridden": 8
+      },
+      "hard_cases": {
+        "model_only": {
+          "n": 30,
+          "tn": 1,
+          "fp": 29,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 3.33,
+          "false_positive_rate": 96.67,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 30,
+          "tn": 25,
+          "fp": 5,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 83.33,
+          "false_positive_rate": 16.67,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 24
+      },
+      "field_all_deployed": {
+        "model_only": {
+          "n": 7368,
+          "tn": 4935,
+          "fp": 1433,
+          "fn": 65,
+          "tp": 935,
+          "accuracy": 79.67,
+          "false_positive_rate": 22.5,
+          "recall": 93.5,
+          "precision": 39.48,
+          "f1": 55.52
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6224,
+          "fp": 144,
+          "fn": 73,
+          "tp": 927,
+          "accuracy": 97.05,
+          "false_positive_rate": 2.26,
+          "recall": 92.7,
+          "precision": 86.55,
+          "f1": 89.52
+        },
+        "verdicts_overridden": 1297
+      },
+      "hard_cases_deployed": {
+        "model_only": {
+          "n": 30,
+          "tn": 1,
+          "fp": 29,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 3.33,
+          "false_positive_rate": 96.67,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 30,
+          "tn": 30,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 100.0,
+          "false_positive_rate": 0.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 29
+      },
+      "hard_case_detail": {
+        "https://www.paypal.com/signin": 97.9,
+        "https://www.paypal.com/us/home": 100.0,
+        "https://github.com/login": 100.0,
+        "https://github.com/features/actions": 100.0,
+        "https://www.autozone.com/": 1.4,
+        "https://www.autozone.com/parts/brakes": 100.0,
+        "https://www.amazon.com/gp/cart/view.html": 100.0,
+        "https://www.amazon.com/dp/B08N5WRWNW": 100.0,
+        "https://www.facebook.com/login/": 99.3,
+        "https://www.instagram.com/accounts/login/": 100.0,
+        "https://www.linkedin.com/feed/": 100.0,
+        "https://www.netflix.com/browse": 100.0,
+        "https://www.apple.com/shop/buy-iphone": 100.0,
+        "https://www.microsoft.com/en-us/windows/": 100.0,
+        "https://www.nytimes.com/section/technology": 100.0,
+        "https://www.booking.com/hotel/ng/lagos.html": 100.0,
+        "https://stackoverflow.com/questions/tagged/python": 100.0,
+        "https://en.wikipedia.org/wiki/Phishing": 100.0,
+        "https://www.jumia.com.ng/phones-tablets/": 100.0,
+        "https://www.gtbank.com/personal-banking": 100.0,
+        "https://paystack.com/docs/payments/accept-payments/": 100.0,
+        "https://flutterwave.com/gb/pricing": 100.0,
+        "https://www.coursera.org/learn/machine-learning": 100.0,
+        "https://medium.com/tag/cybersecurity": 100.0,
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ": 100.0,
+        "https://play.google.com/store/apps": 100.0,
+        "https://www.shopify.com/pricing": 100.0,
+        "https://www.canva.com/templates/": 100.0,
+        "https://www.accessbankplc.com/pages/Personal/Banking": 100.0,
+        "https://x.com/home": 100.0
+      }
+    },
+    "rebalanced": {
+      "phiusiil_test": {
+        "model_only": {
+          "n": 47074,
+          "tn": 26505,
+          "fp": 465,
+          "fn": 1546,
+          "tp": 18558,
+          "accuracy": 95.73,
+          "false_positive_rate": 1.72,
+          "recall": 92.31,
+          "precision": 97.56,
+          "f1": 94.86
+        },
+        "with_reputation_layer": {
+          "n": 47074,
+          "tn": 26505,
+          "fp": 465,
+          "fn": 1548,
+          "tp": 18556,
+          "accuracy": 95.72,
+          "false_positive_rate": 1.72,
+          "recall": 92.3,
+          "precision": 97.56,
+          "f1": 94.85
+        },
+        "verdicts_overridden": 2
+      },
+      "field_all": {
+        "model_only": {
+          "n": 7368,
+          "tn": 5705,
+          "fp": 663,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 88.44,
+          "false_positive_rate": 10.41,
+          "recall": 81.1,
+          "precision": 55.02,
+          "f1": 65.56
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6231,
+          "fp": 137,
+          "fn": 190,
+          "tp": 810,
+          "accuracy": 95.56,
+          "false_positive_rate": 2.15,
+          "recall": 81.0,
+          "precision": 85.53,
+          "f1": 83.2
+        },
+        "verdicts_overridden": 527
+      },
+      "field_all_top100k": {
+        "model_only": {
+          "n": 7368,
+          "tn": 5705,
+          "fp": 663,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 88.44,
+          "false_positive_rate": 10.41,
+          "recall": 81.1,
+          "precision": 55.02,
+          "f1": 65.56
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6232,
+          "fp": 136,
+          "fn": 197,
+          "tp": 803,
+          "accuracy": 95.48,
+          "false_positive_rate": 2.14,
+          "recall": 80.3,
+          "precision": 85.52,
+          "f1": 82.83
+        },
+        "verdicts_overridden": 535
+      },
+      "field_legit_with_paths": {
+        "model_only": {
+          "n": 1368,
+          "tn": 799,
+          "fp": 569,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 58.41,
+          "false_positive_rate": 41.59,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 1368,
+          "tn": 1325,
+          "fp": 43,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 96.86,
+          "false_positive_rate": 3.14,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 526
+      },
+      "field_legit_bare": {
+        "model_only": {
+          "n": 5000,
+          "tn": 4906,
+          "fp": 94,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 98.12,
+          "false_positive_rate": 1.88,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 5000,
+          "tn": 4907,
+          "fp": 93,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 98.14,
+          "false_positive_rate": 1.86,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 1
+      },
+      "field_phishing": {
+        "model_only": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 81.1,
+          "false_positive_rate": 0.0,
+          "recall": 81.1,
+          "precision": 100.0,
+          "f1": 89.56
+        },
+        "with_reputation_layer": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 81.1,
+          "false_positive_rate": 0.0,
+          "recall": 81.1,
+          "precision": 100.0,
+          "f1": 89.56
+        },
+        "verdicts_overridden": 0
+      },
+      "field_phishing_top100k": {
+        "model_only": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 81.1,
+          "false_positive_rate": 0.0,
+          "recall": 81.1,
+          "precision": 100.0,
+          "f1": 89.56
+        },
+        "with_reputation_layer": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 197,
+          "tp": 803,
+          "accuracy": 80.3,
+          "false_positive_rate": 0.0,
+          "recall": 80.3,
+          "precision": 100.0,
+          "f1": 89.07
+        },
+        "verdicts_overridden": 8
+      },
+      "hard_cases": {
+        "model_only": {
+          "n": 30,
+          "tn": 19,
+          "fp": 11,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 63.33,
+          "false_positive_rate": 36.67,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 30,
+          "tn": 26,
+          "fp": 4,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 86.67,
+          "false_positive_rate": 13.33,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 7
+      },
+      "field_all_deployed": {
+        "model_only": {
+          "n": 7368,
+          "tn": 5705,
+          "fp": 663,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 88.44,
+          "false_positive_rate": 10.41,
+          "recall": 81.1,
+          "precision": 55.02,
+          "f1": 65.56
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6232,
+          "fp": 136,
+          "fn": 197,
+          "tp": 803,
+          "accuracy": 95.48,
+          "false_positive_rate": 2.14,
+          "recall": 80.3,
+          "precision": 85.52,
+          "f1": 82.83
+        },
+        "verdicts_overridden": 535
+      },
+      "hard_cases_deployed": {
+        "model_only": {
+          "n": 30,
+          "tn": 19,
+          "fp": 11,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 63.33,
+          "false_positive_rate": 36.67,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 30,
+          "tn": 30,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 100.0,
+          "false_positive_rate": 0.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 11
+      },
+      "hard_case_detail": {
+        "https://www.paypal.com/signin": 36.6,
+        "https://www.paypal.com/us/home": 29.2,
+        "https://github.com/login": 0.0,
+        "https://github.com/features/actions": 8.8,
+        "https://www.autozone.com/": 2.0,
+        "https://www.autozone.com/parts/brakes": 65.0,
+        "https://www.amazon.com/gp/cart/view.html": 5.6,
+        "https://www.amazon.com/dp/B08N5WRWNW": 0.0,
+        "https://www.facebook.com/login/": 76.1,
+        "https://www.instagram.com/accounts/login/": 36.0,
+        "https://www.linkedin.com/feed/": 30.9,
+        "https://www.netflix.com/browse": 28.6,
+        "https://www.apple.com/shop/buy-iphone": 12.9,
+        "https://www.microsoft.com/en-us/windows/": 7.7,
+        "https://www.nytimes.com/section/technology": 36.1,
+        "https://www.booking.com/hotel/ng/lagos.html": 33.3,
+        "https://stackoverflow.com/questions/tagged/python": 100.0,
+        "https://en.wikipedia.org/wiki/Phishing": 35.2,
+        "https://www.jumia.com.ng/phones-tablets/": 99.9,
+        "https://www.gtbank.com/personal-banking": 13.0,
+        "https://paystack.com/docs/payments/accept-payments/": 72.8,
+        "https://flutterwave.com/gb/pricing": 97.2,
+        "https://www.coursera.org/learn/machine-learning": 72.1,
+        "https://medium.com/tag/cybersecurity": 32.9,
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ": 77.5,
+        "https://play.google.com/store/apps": 0.0,
+        "https://www.shopify.com/pricing": 81.1,
+        "https://www.canva.com/templates/": 0.0,
+        "https://www.accessbankplc.com/pages/Personal/Banking": 79.5,
+        "https://x.com/home": 98.1
+      }
+    },
+    "rebalanced_no_path": {
+      "phiusiil_test": {
+        "model_only": {
+          "n": 47074,
+          "tn": 26505,
+          "fp": 465,
+          "fn": 1560,
+          "tp": 18544,
+          "accuracy": 95.7,
+          "false_positive_rate": 1.72,
+          "recall": 92.24,
+          "precision": 97.55,
+          "f1": 94.82
+        },
+        "with_reputation_layer": {
+          "n": 47074,
+          "tn": 26505,
+          "fp": 465,
+          "fn": 1562,
+          "tp": 18542,
+          "accuracy": 95.69,
+          "false_positive_rate": 1.72,
+          "recall": 92.23,
+          "precision": 97.55,
+          "f1": 94.82
+        },
+        "verdicts_overridden": 2
+      },
+      "field_all": {
+        "model_only": {
+          "n": 7368,
+          "tn": 5690,
+          "fp": 678,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 88.23,
+          "false_positive_rate": 10.65,
+          "recall": 81.1,
+          "precision": 54.47,
+          "f1": 65.17
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6230,
+          "fp": 138,
+          "fn": 190,
+          "tp": 810,
+          "accuracy": 95.55,
+          "false_positive_rate": 2.17,
+          "recall": 81.0,
+          "precision": 85.44,
+          "f1": 83.16
+        },
+        "verdicts_overridden": 541
+      },
+      "field_all_top100k": {
+        "model_only": {
+          "n": 7368,
+          "tn": 5690,
+          "fp": 678,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 88.23,
+          "false_positive_rate": 10.65,
+          "recall": 81.1,
+          "precision": 54.47,
+          "f1": 65.17
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6231,
+          "fp": 137,
+          "fn": 197,
+          "tp": 803,
+          "accuracy": 95.47,
+          "false_positive_rate": 2.15,
+          "recall": 80.3,
+          "precision": 85.43,
+          "f1": 82.78
+        },
+        "verdicts_overridden": 549
+      },
+      "field_legit_with_paths": {
+        "model_only": {
+          "n": 1368,
+          "tn": 784,
+          "fp": 584,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 57.31,
+          "false_positive_rate": 42.69,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 1368,
+          "tn": 1324,
+          "fp": 44,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 96.78,
+          "false_positive_rate": 3.22,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 540
+      },
+      "field_legit_bare": {
+        "model_only": {
+          "n": 5000,
+          "tn": 4906,
+          "fp": 94,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 98.12,
+          "false_positive_rate": 1.88,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 5000,
+          "tn": 4907,
+          "fp": 93,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 98.14,
+          "false_positive_rate": 1.86,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 1
+      },
+      "field_phishing": {
+        "model_only": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 81.1,
+          "false_positive_rate": 0.0,
+          "recall": 81.1,
+          "precision": 100.0,
+          "f1": 89.56
+        },
+        "with_reputation_layer": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 81.1,
+          "false_positive_rate": 0.0,
+          "recall": 81.1,
+          "precision": 100.0,
+          "f1": 89.56
+        },
+        "verdicts_overridden": 0
+      },
+      "field_phishing_top100k": {
+        "model_only": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 81.1,
+          "false_positive_rate": 0.0,
+          "recall": 81.1,
+          "precision": 100.0,
+          "f1": 89.56
+        },
+        "with_reputation_layer": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 197,
+          "tp": 803,
+          "accuracy": 80.3,
+          "false_positive_rate": 0.0,
+          "recall": 80.3,
+          "precision": 100.0,
+          "f1": 89.07
+        },
+        "verdicts_overridden": 8
+      },
+      "hard_cases": {
+        "model_only": {
+          "n": 30,
+          "tn": 20,
+          "fp": 10,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 66.67,
+          "false_positive_rate": 33.33,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 30,
+          "tn": 26,
+          "fp": 4,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 86.67,
+          "false_positive_rate": 13.33,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 6
+      },
+      "field_all_deployed": {
+        "model_only": {
+          "n": 7368,
+          "tn": 5690,
+          "fp": 678,
+          "fn": 189,
+          "tp": 811,
+          "accuracy": 88.23,
+          "false_positive_rate": 10.65,
+          "recall": 81.1,
+          "precision": 54.47,
+          "f1": 65.17
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6231,
+          "fp": 137,
+          "fn": 197,
+          "tp": 803,
+          "accuracy": 95.47,
+          "false_positive_rate": 2.15,
+          "recall": 80.3,
+          "precision": 85.43,
+          "f1": 82.78
+        },
+        "verdicts_overridden": 549
+      },
+      "hard_cases_deployed": {
+        "model_only": {
+          "n": 30,
+          "tn": 20,
+          "fp": 10,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 66.67,
+          "false_positive_rate": 33.33,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 30,
+          "tn": 30,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 100.0,
+          "false_positive_rate": 0.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 10
+      },
+      "hard_case_detail": {
+        "https://www.paypal.com/signin": 1.6,
+        "https://www.paypal.com/us/home": 29.2,
+        "https://github.com/login": 0.0,
+        "https://github.com/features/actions": 8.8,
+        "https://www.autozone.com/": 2.0,
+        "https://www.autozone.com/parts/brakes": 65.0,
+        "https://www.amazon.com/gp/cart/view.html": 5.6,
+        "https://www.amazon.com/dp/B08N5WRWNW": 0.0,
+        "https://www.facebook.com/login/": 23.1,
+        "https://www.instagram.com/accounts/login/": 48.2,
+        "https://www.linkedin.com/feed/": 30.9,
+        "https://www.netflix.com/browse": 28.6,
+        "https://www.apple.com/shop/buy-iphone": 12.9,
+        "https://www.microsoft.com/en-us/windows/": 7.7,
+        "https://www.nytimes.com/section/technology": 36.1,
+        "https://www.booking.com/hotel/ng/lagos.html": 33.1,
+        "https://stackoverflow.com/questions/tagged/python": 100.0,
+        "https://en.wikipedia.org/wiki/Phishing": 35.2,
+        "https://www.jumia.com.ng/phones-tablets/": 100.0,
+        "https://www.gtbank.com/personal-banking": 13.0,
+        "https://paystack.com/docs/payments/accept-payments/": 73.5,
+        "https://flutterwave.com/gb/pricing": 98.0,
+        "https://www.coursera.org/learn/machine-learning": 72.1,
+        "https://medium.com/tag/cybersecurity": 32.9,
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ": 86.6,
+        "https://play.google.com/store/apps": 0.0,
+        "https://www.shopify.com/pricing": 80.4,
+        "https://www.canva.com/templates/": 0.0,
+        "https://www.accessbankplc.com/pages/Personal/Banking": 79.6,
+        "https://x.com/home": 91.0
+      }
+    },
+    "rebalanced_balanced": {
+      "phiusiil_test": {
+        "model_only": {
+          "n": 47074,
+          "tn": 26492,
+          "fp": 478,
+          "fn": 1484,
+          "tp": 18620,
+          "accuracy": 95.83,
+          "false_positive_rate": 1.77,
+          "recall": 92.62,
+          "precision": 97.5,
+          "f1": 95.0
+        },
+        "with_reputation_layer": {
+          "n": 47074,
+          "tn": 26492,
+          "fp": 478,
+          "fn": 1486,
+          "tp": 18618,
+          "accuracy": 95.83,
+          "false_positive_rate": 1.77,
+          "recall": 92.61,
+          "precision": 97.5,
+          "f1": 94.99
+        },
+        "verdicts_overridden": 2
+      },
+      "field_all": {
+        "model_only": {
+          "n": 7368,
+          "tn": 5644,
+          "fp": 724,
+          "fn": 174,
+          "tp": 826,
+          "accuracy": 87.81,
+          "false_positive_rate": 11.37,
+          "recall": 82.6,
+          "precision": 53.29,
+          "f1": 64.78
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6227,
+          "fp": 141,
+          "fn": 175,
+          "tp": 825,
+          "accuracy": 95.71,
+          "false_positive_rate": 2.21,
+          "recall": 82.5,
+          "precision": 85.4,
+          "f1": 83.93
+        },
+        "verdicts_overridden": 584
+      },
+      "field_all_top100k": {
+        "model_only": {
+          "n": 7368,
+          "tn": 5644,
+          "fp": 724,
+          "fn": 174,
+          "tp": 826,
+          "accuracy": 87.81,
+          "false_positive_rate": 11.37,
+          "recall": 82.6,
+          "precision": 53.29,
+          "f1": 64.78
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6228,
+          "fp": 140,
+          "fn": 182,
+          "tp": 818,
+          "accuracy": 95.63,
+          "false_positive_rate": 2.2,
+          "recall": 81.8,
+          "precision": 85.39,
+          "f1": 83.55
+        },
+        "verdicts_overridden": 592
+      },
+      "field_legit_with_paths": {
+        "model_only": {
+          "n": 1368,
+          "tn": 741,
+          "fp": 627,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 54.17,
+          "false_positive_rate": 45.83,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 1368,
+          "tn": 1324,
+          "fp": 44,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 96.78,
+          "false_positive_rate": 3.22,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 583
+      },
+      "field_legit_bare": {
+        "model_only": {
+          "n": 5000,
+          "tn": 4903,
+          "fp": 97,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 98.06,
+          "false_positive_rate": 1.94,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 5000,
+          "tn": 4904,
+          "fp": 96,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 98.08,
+          "false_positive_rate": 1.92,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 1
+      },
+      "field_phishing": {
+        "model_only": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 174,
+          "tp": 826,
+          "accuracy": 82.6,
+          "false_positive_rate": 0.0,
+          "recall": 82.6,
+          "precision": 100.0,
+          "f1": 90.47
+        },
+        "with_reputation_layer": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 174,
+          "tp": 826,
+          "accuracy": 82.6,
+          "false_positive_rate": 0.0,
+          "recall": 82.6,
+          "precision": 100.0,
+          "f1": 90.47
+        },
+        "verdicts_overridden": 0
+      },
+      "field_phishing_top100k": {
+        "model_only": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 174,
+          "tp": 826,
+          "accuracy": 82.6,
+          "false_positive_rate": 0.0,
+          "recall": 82.6,
+          "precision": 100.0,
+          "f1": 90.47
+        },
+        "with_reputation_layer": {
+          "n": 1000,
+          "tn": 0,
+          "fp": 0,
+          "fn": 182,
+          "tp": 818,
+          "accuracy": 81.8,
+          "false_positive_rate": 0.0,
+          "recall": 81.8,
+          "precision": 100.0,
+          "f1": 89.99
+        },
+        "verdicts_overridden": 8
+      },
+      "hard_cases": {
+        "model_only": {
+          "n": 30,
+          "tn": 18,
+          "fp": 12,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 60.0,
+          "false_positive_rate": 40.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 30,
+          "tn": 26,
+          "fp": 4,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 86.67,
+          "false_positive_rate": 13.33,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 8
+      },
+      "field_all_deployed": {
+        "model_only": {
+          "n": 7368,
+          "tn": 5644,
+          "fp": 724,
+          "fn": 174,
+          "tp": 826,
+          "accuracy": 87.81,
+          "false_positive_rate": 11.37,
+          "recall": 82.6,
+          "precision": 53.29,
+          "f1": 64.78
+        },
+        "with_reputation_layer": {
+          "n": 7368,
+          "tn": 6228,
+          "fp": 140,
+          "fn": 182,
+          "tp": 818,
+          "accuracy": 95.63,
+          "false_positive_rate": 2.2,
+          "recall": 81.8,
+          "precision": 85.39,
+          "f1": 83.55
+        },
+        "verdicts_overridden": 592
+      },
+      "hard_cases_deployed": {
+        "model_only": {
+          "n": 30,
+          "tn": 18,
+          "fp": 12,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 60.0,
+          "false_positive_rate": 40.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "with_reputation_layer": {
+          "n": 30,
+          "tn": 30,
+          "fp": 0,
+          "fn": 0,
+          "tp": 0,
+          "accuracy": 100.0,
+          "false_positive_rate": 0.0,
+          "recall": 0.0,
+          "precision": 0.0,
+          "f1": 0.0
+        },
+        "verdicts_overridden": 12
+      },
+      "hard_case_detail": {
+        "https://www.paypal.com/signin": 43.5,
+        "https://www.paypal.com/us/home": 33.2,
+        "https://github.com/login": 0.0,
+        "https://github.com/features/actions": 10.6,
+        "https://www.autozone.com/": 2.0,
+        "https://www.autozone.com/parts/brakes": 70.4,
+        "https://www.amazon.com/gp/cart/view.html": 7.1,
+        "https://www.amazon.com/dp/B08N5WRWNW": 0.0,
+        "https://www.facebook.com/login/": 79.8,
+        "https://www.instagram.com/accounts/login/": 41.1,
+        "https://www.linkedin.com/feed/": 33.1,
+        "https://www.netflix.com/browse": 30.4,
+        "https://www.apple.com/shop/buy-iphone": 14.7,
+        "https://www.microsoft.com/en-us/windows/": 9.0,
+        "https://www.nytimes.com/section/technology": 40.9,
+        "https://www.booking.com/hotel/ng/lagos.html": 50.5,
+        "https://stackoverflow.com/questions/tagged/python": 100.0,
+        "https://en.wikipedia.org/wiki/Phishing": 37.7,
+        "https://www.jumia.com.ng/phones-tablets/": 100.0,
+        "https://www.gtbank.com/personal-banking": 14.5,
+        "https://paystack.com/docs/payments/accept-payments/": 81.5,
+        "https://flutterwave.com/gb/pricing": 99.8,
+        "https://www.coursera.org/learn/machine-learning": 75.2,
+        "https://medium.com/tag/cybersecurity": 40.7,
+        "https://www.youtube.com/watch?v=dQw4w9WgXcQ": 85.7,
+        "https://play.google.com/store/apps": 0.1,
+        "https://www.shopify.com/pricing": 83.3,
+        "https://www.canva.com/templates/": 0.0,
+        "https://www.accessbankplc.com/pages/Personal/Banking": 84.5,
+        "https://x.com/home": 99.7
+      }
+    }
+  },
+  "selection": {
+    "rule": "highest accuracy on the field test (held-out legitimate URLs with paths, held-out legitimate bare domains, 500 hostile full URLs, 500 hostile bare domains); ties broken by the lower false-positive rate on legitimate URLs that carry a path, then by higher recall on hostile URLs",
+    "winner": "rebalanced",
+    "ranker": {
+      "baseline": {
+        "field_accuracy": 79.67,
+        "legit_with_paths_fp": 100.0
+      },
+      "rebalanced": {
+        "field_accuracy": 88.44,
+        "legit_with_paths_fp": 41.59
+      },
+      "rebalanced_no_path": {
+        "field_accuracy": 88.23,
+        "legit_with_paths_fp": 42.69
+      },
+      "rebalanced_balanced": {
+        "field_accuracy": 87.81,
+        "legit_with_paths_fp": 45.83
+      }
+    }
+  },
+  "threshold_sweep": {
+    "0.3": {
+      "accuracy": 86.02,
+      "precision": 49.19,
+      "recall": 90.6,
+      "f1": 63.76,
+      "accuracy_with_reputation": 95.72
+    },
+    "0.4": {
+      "accuracy": 86.79,
+      "precision": 50.8,
+      "recall": 85.7,
+      "f1": 63.79,
+      "accuracy_with_reputation": 95.53
+    },
+    "0.5": {
+      "accuracy": 88.44,
+      "precision": 55.02,
+      "recall": 81.1,
+      "f1": 65.56,
+      "accuracy_with_reputation": 95.48
+    },
+    "0.6": {
+      "accuracy": 90.16,
+      "precision": 60.75,
+      "recall": 77.7,
+      "f1": 68.19,
+      "accuracy_with_reputation": 95.58
+    },
+    "0.7": {
+      "accuracy": 91.4,
+      "precision": 65.78,
+      "recall": 76.3,
+      "f1": 70.65,
+      "accuracy_with_reputation": 95.64
+    },
+    "0.8": {
+      "accuracy": 91.15,
+      "precision": 67.61,
+      "recall": 66.8,
+      "f1": 67.2,
+      "accuracy_with_reputation": 94.64
+    }
+  }
+}

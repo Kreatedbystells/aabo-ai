@@ -1,0 +1,134 @@
+# Nigerian domain reputation list — the gap that global popularity lists leave.
+#
+# No Nigerian domain appears in the top 100,000 of the merged global popularity list:
+# jumia.com.ng is ranked 212,517, gtbank.com 365,782, paystack.com 432,967,
+# firstbanknigeria.com 505,608 and zenithbank.com 527,015. A reputation layer built only
+# from global traffic data therefore gives a Nigerian user no protection on the sites they
+# use most, which is exactly what the hard-case test showed.
+#
+# Entries are well-known Nigerian banks, payment providers, telecommunication operators,
+# retailers, media houses, utilities and institutions. Being on this list is NOT a claim
+# that a domain is safe; it means that when the classifier accuses it, the accusation is
+# more likely to be a false positive and should be shown to the user as unverified rather
+# than malicious. Domain identity is never a feature of the classifier, so this list
+# affects presentation only and cannot change the model's verdict.
+
+# --- commercial banks
+gtbank.com
+zenithbank.com
+accessbankplc.com
+firstbanknigeria.com
+ubagroup.com
+unionbankng.com
+fidelitybank.ng
+fcmb.com
+stanbicibtcbank.com
+wemabank.com
+sterling.ng
+keystonebankng.com
+providusbank.com
+polarisbanklimited.com
+unitybank.com
+suntrustng.com
+titaniumtrustbank.com
+jaizbankplc.com
+ecobank.com
+citiserve.com.ng
+coronationmb.com
+africaprudential.com
+
+# --- fintech and payment providers
+paystack.com
+flutterwave.com
+interswitchng.com
+remita.net
+opay.com
+palmpay.com
+moniepoint.com
+kuda.com
+vbank.ng
+piggyvest.com
+cowrywise.com
+fairmoney.com
+carbon.ng
+teamapt.com
+budpay.com
+
+# --- telecommunications and internet service providers
+mtn.ng
+mtnonline.com
+airtel.com.ng
+glo.com
+9mobile.com.ng
+smile.com.ng
+spectranet.com.ng
+ipnx.com.ng
+tizeti.com
+mainone.net
+
+# --- retail, marketplaces and logistics
+jumia.com.ng
+konga.com
+jiji.ng
+slot.ng
+pointek.com.ng
+gigl.ng
+dangote.com
+shoprite.ng
+justrite.com.ng
+
+# --- travel and mobility
+wakanow.com
+travelstart.com.ng
+airpeace.com
+arikeair.com
+gokada.ng
+
+# --- news and media
+punchng.com
+vanguardngr.com
+guardian.ng
+premiumtimesng.com
+thenationonlineng.net
+tribuneonlineng.com
+businessday.ng
+nairaland.com
+legit.ng
+pulse.ng
+channelstv.com
+saharareporters.com
+independent.ng
+newtelegraphng.com
+sunnewsonline.com
+
+# --- utilities, institutions and public services
+nou.edu.ng
+unilag.edu.ng
+unn.edu.ng
+abu.edu.ng
+jamb.gov.ng
+ncc.gov.ng
+nitda.gov.ng
+nerc.gov.ng
+efcc.gov.ng
+waecnigeria.org
+ikejaelectric.com
+ekedc.com
+abujaelectricity.com
+enugudisco.com
+dstv.com
+multichoice.com
+gotvafrica.com
+sportybet.com
+bet9ja.com
+nairabet.com
+
+# --- restricted second-level registries
+# .gov.ng and .edu.ng registrations are restricted to verified government agencies and
+# accredited institutions under the national registry policy, which raises the cost of
+# registering a deceptive domain under them. This is a weaker signal than an explicit
+# entry: a compromised institution host is still possible, so a conflict is still shown
+# to the user as unverified rather than silently cleared.
+.gov.ng
+.edu.ng
+.mil.ng

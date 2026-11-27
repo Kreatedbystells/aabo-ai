@@ -1,0 +1,86 @@
+{
+  "total": 12,
+  "passed": 12,
+  "failed": 0,
+  "tests": [
+    {
+      "id": "FR1",
+      "requirement": "accept a submitted URL through the interface",
+      "passed": true,
+      "observed": "HTTP 200, verdict=legitimate"
+    },
+    {
+      "id": "FR9",
+      "requirement": "classification exposed as an HTTP endpoint returning JSON",
+      "passed": true,
+      "observed": "HTTP 200, JSON keys=['confidence', 'evidence', 'features', 'latency_ms', 'model', 'probability_phishing']"
+    },
+    {
+      "id": "FR2a",
+      "requirement": "reject empty input with a descriptive message",
+      "passed": true,
+      "observed": "HTTP 422, detail=A URL is required."
+    },
+    {
+      "id": "FR3",
+      "requirement": "exactly sixteen features extracted and returned",
+      "passed": true,
+      "observed": "16 features returned"
+    },
+    {
+      "id": "FR4",
+      "requirement": "verdict is phishing or legitimate",
+      "passed": true,
+      "observed": "verdict=phishing"
+    },
+    {
+      "id": "FR5",
+      "requirement": "confidence score returned between zero and one",
+      "passed": true,
+      "observed": "probability_phishing=98.5"
+    },
+    {
+      "id": "FR6",
+      "requirement": "at least three contributing features returned",
+      "passed": true,
+      "observed": "5 features: is_https, url_length, path_length, hostname_length, query_length"
+    },
+    {
+      "id": "FR7",
+      "requirement": "each scan recorded with verdict, confidence and timestamp",
+      "passed": true,
+      "observed": "5 records, newest=http://example.com/a/b?c=1"
+    },
+    {
+      "id": "FR10",
+      "requirement": "explicit error rather than a false verdict",
+      "passed": true,
+      "observed": "HTTP 422, no verdict key in response"
+    },
+    {
+      "id": "NFR1",
+      "requirement": "median classification time under 1 second",
+      "passed": true,
+      "observed": "n=30, median=14.8 ms, min=11.8 ms, max=16.7 ms"
+    },
+    {
+      "id": "NFR5",
+      "requirement": "every verdict accompanied by at least three features",
+      "passed": true,
+      "observed": "evidence counts=[5, 5, 5]"
+    },
+    {
+      "id": "NFR6",
+      "requirement": "model loaded from a serialised artefact",
+      "passed": true,
+      "observed": "model=Random Forest, n_features=16"
+    }
+  ],
+  "latency": {
+    "n": 30,
+    "median_ms": 14.76,
+    "min_ms": 11.83,
+    "max_ms": 16.7,
+    "mean_ms": 14.93
+  }
+}

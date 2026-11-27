@@ -1,0 +1,10 @@
+{
+  "variant": "rebalanced",
+  "artifact": "model_selected.joblib",
+  "algorithm": "Random Forest",
+  "n_features": 16,
+  "phiusiil_accuracy": 95.73,
+  "field_accuracy": 88.44,
+  "field_accuracy_with_reputation": 95.48,
+  "trained_at": "2026-11-26"
+}

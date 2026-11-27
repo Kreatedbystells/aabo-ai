@@ -1,0 +1,18 @@
+# Operator-maintained trusted-domain list — deployment configuration, not evidence.
+#
+# This file is NOT part of the study's reputation tiers. Table 22 of the report counts the
+# global popularity list and the curated Nigerian list, and those counts stay true because
+# this file is reported separately.
+#
+# Its purpose is the ordinary product need: an operator running this tool knows first-hand
+# that certain domains are legitimate — their own site, a client's site, an intranet — and
+# wants the classifier's pattern-matching not to tell their own customers that the site is
+# an attack. Being here is not a claim that a URL is safe.
+#
+# Matches behave exactly like the study's lists: an accusation against a listed domain is
+# PRESENTED AS UNVERIFIED, never as malicious and never silently cleared as legitimate.
+#
+# One registrable domain per line. '#' starts a comment.
+
+# Chair Doctor NG Limited — the operator's own business (CAC-registered, Lagos).
+chairdoctorng.com

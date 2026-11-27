@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "app.py": {
+      "maxDuration": 60,
+      "memory": 1024,
+      "excludeFiles": "{data/**,ml/**,templates/**,artifacts/figs/**,*.docx,ch*.md,*.png,__pycache__/**}"
+    }
+  },
+  "env": {
+    "AABO_DB": "/tmp/scans.db"
+  }
+}

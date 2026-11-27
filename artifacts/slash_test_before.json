@@ -1,0 +1,57 @@
+{
+  "model_rf.joblib": {
+    "bare host, no path": {
+      "n": 300,
+      "false_positive_rate": 94.0,
+      "median_probability_phishing": 100.0
+    },
+    "bare host, one trailing slash": {
+      "n": 300,
+      "false_positive_rate": 100.0,
+      "median_probability_phishing": 100.0
+    },
+    "host with a one-segment path": {
+      "n": 300,
+      "false_positive_rate": 100.0,
+      "median_probability_phishing": 100.0
+    },
+    "host with a two-segment path": {
+      "n": 300,
+      "false_positive_rate": 100.0,
+      "median_probability_phishing": 100.0
+    },
+    "www host, deep path": {
+      "n": 300,
+      "false_positive_rate": 100.0,
+      "median_probability_phishing": 100.0
+    }
+  },
+  "model_selected.joblib": {
+    "bare host, no path": {
+      "n": 300,
+      "false_positive_rate": 94.0,
+      "median_probability_phishing": 100.0
+    },
+    "bare host, one trailing slash": {
+      "n": 300,
+      "false_positive_rate": 100.0,
+      "median_probability_phishing": 100.0
+    },
+    "host with a one-segment path": {
+      "n": 300,
+      "false_positive_rate": 76.67,
+      "median_probability_phishing": 91.71
+    },
+    "host with a two-segment path": {
+      "n": 300,
+      "false_positive_rate": 90.33,
+      "median_probability_phishing": 89.22
+    },
+    "www host, deep path": {
+      "n": 300,
+      "false_positive_rate": 42.0,
+      "median_probability_phishing": 29.7
+    }
+  },
+  "legit_corpus_by_path_length": {}
+}

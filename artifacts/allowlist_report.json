@@ -1,0 +1,42 @@
+{
+  "top10k": {
+    "domains": 2024,
+    "hostile_urls_cleared_of_1000": 1,
+    "worst_offenders": [
+      [
+        "myftpupload.com",
+        1
+      ]
+    ]
+  },
+  "top100k": {
+    "domains": 15989,
+    "hostile_urls_cleared_of_1000": 9,
+    "worst_offenders": [
+      [
+        "temporary.link",
+        2
+      ],
+      [
+        "mjt.lu",
+        2
+      ],
+      [
+        "sibforms.com",
+        2
+      ],
+      [
+        "swtest.ru",
+        1
+      ],
+      [
+        "myftpupload.com",
+        1
+      ],
+      [
+        "wpenginepowered.com",
+        1
+      ]
+    ]
+  }
+}

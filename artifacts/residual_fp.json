@@ -1,0 +1,29 @@
+{
+  "2 (one segment)": {
+    "n": 40,
+    "false_positive_rate": 42.5
+  },
+  "3+ (deeper path)": {
+    "n": 1328,
+    "false_positive_rate": 41.57
+  },
+  "fp_with_suspicious_token": {
+    "n": 22,
+    "of_false_positives": 569,
+    "percent": 3.9
+  },
+  "examples_with_token": [
+    "https://ampproject.org/support/faq/",
+    "https://ampproject.org/support/faq/platform-and-vendor-partners/",
+    "https://cloudinary.com/blog/cloudinary_adds_support_for_http_2",
+    "https://cloudinary.com/product_updates",
+    "https://dashboard.hcaptcha.com/login",
+    "https://hcaptcha.com/account-defense",
+    "https://hcaptcha.com/account-sharing",
+    "https://hcaptcha.com/account-takeovers",
+    "https://hcaptcha.com/multi-accounting-collusion",
+    "https://jwplayer.com/author-sitemap.xml",
+    "https://nexx360.io/the-trusted-third-party-to-support-the-programmatic-evolution-of-online-content-publishers/",
+    "https://userreport.com/create-free-account/"
+  ]
+}

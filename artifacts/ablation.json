@@ -1,0 +1,102 @@
+{
+  "n_train": 188296,
+  "n_test": 47074,
+  "all_16": {
+    "test_accuracy": 99.59,
+    "test_recall_phishing": 99.15,
+    "test_false_positives": 23,
+    "unseen_full_urls_detected": 100.0,
+    "unseen_bare_domains_detected": 81.4,
+    "unseen_legit_cleared": 53.2,
+    "hard_cases": {
+      "paypal.com/signin": 100.0,
+      "github.com/login": 100.0,
+      "autozone.com": 100.0,
+      "google.com": 0.1
+    }
+  },
+  "without_path_length": {
+    "test_accuracy": 99.54,
+    "test_recall_phishing": 99.13,
+    "test_false_positives": 42,
+    "unseen_full_urls_detected": 100.0,
+    "unseen_bare_domains_detected": 83.4,
+    "unseen_legit_cleared": 48.8,
+    "hard_cases": {
+      "paypal.com/signin": 94.0,
+      "github.com/login": 99.5,
+      "autozone.com": 100.0,
+      "google.com": 0.1
+    }
+  },
+  "class_medians": {
+    "url_length": {
+      "legitimate": 27.0,
+      "phishing": 34.0
+    },
+    "hostname_length": {
+      "legitimate": 19.0,
+      "phishing": 22.0
+    },
+    "path_length": {
+      "legitimate": 0.0,
+      "phishing": 1.0
+    },
+    "query_length": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    },
+    "hostname_depth": {
+      "legitimate": 2.0,
+      "phishing": 2.0
+    },
+    "subdomain_count": {
+      "legitimate": 1.0,
+      "phishing": 1.0
+    },
+    "has_ip_address": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    },
+    "has_at_symbol": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    },
+    "has_double_slash": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    },
+    "is_https": {
+      "legitimate": 1.0,
+      "phishing": 0.0
+    },
+    "hyphen_count": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    },
+    "digit_ratio": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    },
+    "suspicious_token_count": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    },
+    "suspicious_tld": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    },
+    "encoded_char_count": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    },
+    "brand_in_subdomain": {
+      "legitimate": 0.0,
+      "phishing": 0.0
+    }
+  },
+  "path_length_zero_share": {
+    "legitimate": 100.0,
+    "phishing": 40.3
+  }
+}

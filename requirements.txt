@@ -1,0 +1,10 @@
+# Runtime dependencies of the deployed system (app.py).
+# Vercel installs exactly this file when the project is deployed, so it lists only
+# what the running service imports. The research and document-build dependencies are
+# in requirements-research.txt.
+numpy
+scikit-learn
+joblib
+fastapi
+pydantic
+publicsuffix2

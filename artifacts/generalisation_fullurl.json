@@ -1,0 +1,17 @@
+{
+  "source": "Phishing.Database active phishing links (community-maintained)",
+  "available_urls": 10726,
+  "sampled": 500,
+  "models": {
+    "random_forest": {
+      "detected_phishing": 500,
+      "tested": 500,
+      "detection_rate_pct": 100.0
+    },
+    "logistic_regression": {
+      "detected_phishing": 500,
+      "tested": 500,
+      "detection_rate_pct": 100.0
+    }
+  }
+}

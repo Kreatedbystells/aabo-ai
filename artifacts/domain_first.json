@@ -1,0 +1,45 @@
+{
+ "legit_with_paths": {
+  "n": 1368,
+  "accused_by_full_address": 569,
+  "accused_by_domain_alone": 41,
+  "false_positive_rate_full": 41.59,
+  "false_positive_rate_domain_only": 3.0,
+  "accusations_a_domain_only_verdict_would_clear": 529,
+  "accusations_the_domain_only_verdict_would_add": 1
+ },
+ "legit_bare_domains": {
+  "n": 5000,
+  "accused_by_full_address": 94,
+  "accused_by_domain_alone": 94,
+  "false_positive_rate_full": 1.88,
+  "false_positive_rate_domain_only": 1.88,
+  "accusations_a_domain_only_verdict_would_clear": 0,
+  "accusations_the_domain_only_verdict_would_add": 0
+ },
+ "hostile": {
+  "n": 1000,
+  "accused_by_full_address": 811,
+  "accused_by_domain_alone": 811,
+  "false_positive_rate_full": 81.1,
+  "false_positive_rate_domain_only": 81.1,
+  "accusations_a_domain_only_verdict_would_clear": 0,
+  "accusations_the_domain_only_verdict_would_add": 0
+ },
+ "hostile_detail": {
+  "caught_by_full_address": 811,
+  "caught_by_domain_alone": 811,
+  "caught_by_full_but_lost_by_domain_alone": 0,
+  "recall_full": 81.1,
+  "recall_domain_only": 81.1
+ },
+ "policy_whole_field": {
+  "false_positives": 134,
+  "true_positives": 811,
+  "false_negatives": 189,
+  "false_positive_rate": 2.1,
+  "recall": 81.1,
+  "precision": 85.82,
+  "f1": 83.39
+ }
+}

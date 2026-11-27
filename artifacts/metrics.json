@@ -1,0 +1,131 @@
+{
+  "dataset": {
+    "raw_rows": 235795,
+    "duplicate_urls_removed": 425,
+    "unparseable_dropped": 0,
+    "usable_rows": 235370,
+    "train_rows": 188296,
+    "test_rows": 47074,
+    "test_size": 0.2,
+    "random_state": 42,
+    "phishing": 100520,
+    "legitimate": 134850
+  },
+  "training_seconds": {
+    "random_forest": 4.6,
+    "logistic_regression": 0.4
+  },
+  "latency_ms_per_prediction": {
+    "random_forest": 14.359,
+    "logistic_regression": 0.065
+  },
+  "results": {
+    "random_forest": {
+      "accuracy": 0.9959,
+      "precision": 0.9988,
+      "recall": 0.9915,
+      "f1": 0.9952,
+      "tn": 26947,
+      "fp": 23,
+      "fn": 170,
+      "tp": 19934,
+      "confusion_matrix_png": "/Users/amarachi/Downloads/Stella_Project/artifacts/cm_rf.png",
+      "classification_report": "              precision    recall  f1-score   support\n\n  Legitimate     0.9937    0.9991    0.9964     26970\n    Phishing     0.9988    0.9915    0.9952     20104\n\n    accuracy                         0.9959     47074\n   macro avg     0.9963    0.9953    0.9958     47074\nweighted avg     0.9959    0.9959    0.9959     47074\n"
+    },
+    "logistic_regression": {
+      "accuracy": 0.9892,
+      "precision": 0.9978,
+      "recall": 0.9769,
+      "f1": 0.9872,
+      "tn": 26926,
+      "fp": 44,
+      "fn": 464,
+      "tp": 19640,
+      "confusion_matrix_png": "/Users/amarachi/Downloads/Stella_Project/artifacts/cm_lr.png",
+      "classification_report": "              precision    recall  f1-score   support\n\n  Legitimate     0.9831    0.9984    0.9907     26970\n    Phishing     0.9978    0.9769    0.9872     20104\n\n    accuracy                         0.9892     47074\n   macro avg     0.9904    0.9876    0.9889     47074\nweighted avg     0.9893    0.9892    0.9892     47074\n"
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "is_https",
+      "rf_importance": 0.41427498758790615,
+      "lr_coefficient": -5.977481175519517
+    },
+    {
+      "feature": "path_length",
+      "rf_importance": 0.30999782911258733,
+      "lr_coefficient": 78.42538629861143
+    },
+    {
+      "feature": "url_length",
+      "rf_importance": 0.08848386785819705,
+      "lr_coefficient": 45.098649119051885
+    },
+    {
+      "feature": "digit_ratio",
+      "rf_importance": 0.06848120609661099,
+      "lr_coefficient": 1.4884345638306802
+    },
+    {
+      "feature": "hostname_length",
+      "rf_importance": 0.026685180489994156,
+      "lr_coefficient": -8.177260700147402
+    },
+    {
+      "feature": "hostname_depth",
+      "rf_importance": 0.026660025154174323,
+      "lr_coefficient": -0.2500763864285793
+    },
+    {
+      "feature": "subdomain_count",
+      "rf_importance": 0.02108903311842577,
+      "lr_coefficient": -0.2500763864287215
+    },
+    {
+      "feature": "suspicious_tld",
+      "rf_importance": 0.02051311068938421,
+      "lr_coefficient": 0.7170415832428378
+    },
+    {
+      "feature": "hyphen_count",
+      "rf_importance": 0.017464468059720545,
+      "lr_coefficient": 0.555031617901974
+    },
+    {
+      "feature": "suspicious_token_count",
+      "rf_importance": 0.003915422744412361,
+      "lr_coefficient": 0.39800332654637055
+    },
+    {
+      "feature": "query_length",
+      "rf_importance": 0.0020340393211609165,
+      "lr_coefficient": 1.9031106681474723
+    },
+    {
+      "feature": "brand_in_subdomain",
+      "rf_importance": 0.00022577488251326753,
+      "lr_coefficient": 0.18647991478148004
+    },
+    {
+      "feature": "encoded_char_count",
+      "rf_importance": 0.00013168183358039896,
+      "lr_coefficient": 0.4513250489375334
+    },
+    {
+      "feature": "has_double_slash",
+      "rf_importance": 4.135942789001417e-05,
+      "lr_coefficient": 0.5438496640317506
+    },
+    {
+      "feature": "has_ip_address",
+      "rf_importance": 2.0136234423546224e-06,
+      "lr_coefficient": 0.5863738718924332
+    },
+    {
+      "feature": "has_at_symbol",
+      "rf_importance": 0.0,
+      "lr_coefficient": 0.1399913777400913
+    }
+  ],
+  "total_seconds": 12.1
+}

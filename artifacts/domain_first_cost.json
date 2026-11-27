@@ -1,0 +1,52 @@
+{
+ "hostile_bare_domains_in_list": 146416,
+ "sample": 2000,
+ "read_legitimate_on_its_own": 742,
+ "read_legitimate_on_its_own_pct": 37.1,
+ "accused_once_it_carries_a_path": 1978,
+ "accused_which_the_rule_downgrades": 722,
+ "downgraded_pct_of_path_accusations": 36.5,
+ "downgraded_pct_of_sample": 36.1,
+ "examples": [
+  {
+   "host": "aldi.nivdostore.shop",
+   "bare": 47.86,
+   "with_path": 96.5
+  },
+  {
+   "host": "ilminsterfield.eu",
+   "bare": 41.92,
+   "with_path": 98.5
+  },
+  {
+   "host": "aldiusa.lrpick.shop",
+   "bare": 36.98,
+   "with_path": 90.07
+  },
+  {
+   "host": "saoppskwm.eu.cc",
+   "bare": 26.38,
+   "with_path": 71.48
+  },
+  {
+   "host": "gevneuraai.net",
+   "bare": 26.7,
+   "with_path": 89.63
+  },
+  {
+   "host": "lalignenttist.lovable.app",
+   "bare": 7.6,
+   "with_path": 99.26
+  },
+  {
+   "host": "scsbj.com",
+   "bare": 11.17,
+   "with_path": 61.6
+  },
+  {
+   "host": "k4nv7zp.hair",
+   "bare": 40.49,
+   "with_path": 82.17
+  }
+ ]
+}
