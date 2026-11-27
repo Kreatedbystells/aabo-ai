@@ -97,8 +97,12 @@ Large inputs are excluded to keep the repository small. Re-download into `data/`
 - `PhiUSIIL_Phishing_URL_Dataset.csv` — https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset
 - `top-1m.csv` — https://s3-us-west-1.amazonaws.com/umbrella-static/top-1m.csv.zip
 
-Blocklist samples used for evaluation come from Phishing.Database and the Phishing Army list;
-they are not redistributed here.
+Blocklist samples used for evaluation come from Phishing.Database and the Phishing Army list.
+The Phishing Army list is also bundled at `artifacts/blocklist_hostile.txt` — 112,433
+registrable domains after public-suffix normalisation — and is consulted at scan time as
+`build_hostile_blocklist.py` describes: a listed domain's accusation is never weakened by the
+domain-first rule, but the list never creates an accusation and never clears one. It is not a
+study tier and is excluded from the reputation-layer counts.
 
 ## The finding (the project's main result)
 
@@ -135,3 +139,8 @@ public and unauthenticated. This is a demonstration system, not a production ser
 
 PhiUSIIL Phishing URL Dataset (Prasad & Chandra, 2024), distributed via the UCI Machine
 Learning Repository, used under its original licence.
+
+Phishing Army blocklist (https://phishing.army/), bundled at `artifacts/blocklist_hostile.txt`
+for the hosted demonstration. Used for non-commercial purposes under the terms published at
+https://phishing.army/license/; the source is named in `artifacts/blocklist_report.json` and the
+list is redistributed unmodified in substance, reduced to registrable domains.

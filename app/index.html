@@ -503,16 +503,23 @@ function render(d){
     `<b>Confidence</b> is the model's certainty in the verdict above — whenever the model accuses an
      address, it is by definition the same number as the phishing probability, which is why the two
      agree. ` +
-    (rep.known_domain ? `Domain status: <b>known</b>, listed in ${SRC[rep.list] || 'a bundled list'}.`
-                      : (rep.domain_only_probability_phishing != null &&
-                         rep.domain_only_probability_phishing < 50
-                          ? `Domain status: <b>not in any bundled reputation list</b>. Read on its own,
-                             the domain <b>${rep.domain}</b> — everything before the
-                             first slash — scores ${rep.domain_only_probability_phishing.toFixed(1)}%,
-                             below the 0.50 threshold, so the accusation rests on the rest of the
-                             address rather than on the domain.`
-                          : `Domain status: <b>not in any bundled reputation list</b>, so the model's
-                             score stands alone here.`));
+    (rep.known_domain ? `Domain status: <b>known</b>, listed in ${SRC[rep.matched_list || rep.list] || 'a bundled list'}.`
+      : rep.hostile_listed
+        ? (d.verdict === 'phishing'
+            ? `Domain status: <b>listed as hostile</b> — the bundled blocklist of reported hostile
+               domains carries this domain, and the classifier accused the address on its own.`
+            : `Domain status: <b>listed as hostile</b> in the bundled blocklist of reported hostile
+               domains, but the classifier reads this address as legitimate. The list never creates
+               an accusation of its own.`)
+      : (rep.domain_only_probability_phishing != null &&
+         rep.domain_only_probability_phishing < 50
+          ? `Domain status: <b>not in any bundled reputation list</b>. Read on its own,
+             the domain <b>${rep.domain}</b> — everything before the
+             first slash — scores ${rep.domain_only_probability_phishing.toFixed(1)}%,
+             below the 0.50 threshold, so the accusation rests on the rest of the
+             address rather than on the domain.`
+          : `Domain status: <b>not in any bundled reputation list</b>, so the model's
+             score stands alone here.`));
 
   const note = $('#note');
   if (rep.conflict){
@@ -521,10 +528,13 @@ function render(d){
       ? 'Known domain — shown as unverified rather than malicious.'
       : 'The domain alone reads as legitimate — shown as unverified rather than malicious.';
     note.innerHTML = '<b>' + head + '</b> ' + rep.note;
+  } else if (rep.hostile_listed && d.verdict === 'phishing'){
+    note.className = 'note info on';
+    note.innerHTML = '<b>Supported by a bundled blocklist — the accusation stands.</b> ' + rep.note;
   } else if (rep.known_domain){
     note.className = 'note info on';
     note.innerHTML = '<b>Known domain.</b> ' + rep.domain + ' appears in ' +
-                     (SRC[rep.list] || 'a bundled reputation list') + '.';
+                     (SRC[rep.matched_list || rep.list] || 'a bundled reputation list') + '.';
   } else { note.remove(); }
 
   const max = Math.max(...d.evidence.map(e => e.importance), 0.0001);

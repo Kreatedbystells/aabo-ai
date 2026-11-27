@@ -1,0 +1,23 @@
+{
+ "source": "Phishing Army (https://phishing.army/)",
+ "licence": "see https://phishing.army/license/ - non-commercial use, attribution retained here",
+ "raw_entries": 146384,
+ "registrable_domains": 112433,
+ "excluded_test_entries": [
+  "amiprotected.it"
+ ],
+ "excluded_platform_apexes": [
+  "myshopify.com",
+  "netlify.app",
+  "notion.site",
+  "pages.dev",
+  "r2.dev",
+  "replit.app",
+  "vercel.app",
+  "webflow.io",
+  "weebly.com",
+  "wixsite.com"
+ ],
+ "dropped_malformed": 0,
+ "file": "artifacts/blocklist_hostile.txt"
+}

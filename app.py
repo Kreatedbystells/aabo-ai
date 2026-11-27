@@ -60,6 +60,24 @@ ALLOW = ALLOW_GLOBAL | ALLOW_NG
 # Section 4.6.5.
 ALLOW_OPERATOR = load_allowlist(os.path.join(ART, "allowlist_operator.txt"))
 ALLOW_LOOKUP = ALLOW | ALLOW_OPERATOR
+
+
+def load_hostile_blocklist():
+    """The bundled list of domains reported as hostile, shipped with this deployment.
+
+    Membership can only ever *support* an accusation the classifier has already made: it never
+    creates one and it never clears one. It exists for the case Section 4.6.8 measured — a hostile
+    domain carrying a path, which the domain-first rule would otherwise weaken on the strength of
+    the domain alone. Rebuilt by build_hostile_blocklist.py; the source is named there.
+    """
+    path = os.path.join(ART, os.environ.get("AABO_HOSTILE", "blocklist_hostile.txt"))
+    if not os.path.exists(path):
+        return set()
+    return {line.strip().lower() for line in open(path, errors="ignore")
+            if line.strip() and not line.startswith("#")}
+
+
+HOSTILE = load_hostile_blocklist()
 META = json.load(open(os.path.join(ART, "metrics.json")))
 MODEL_ID = 1
 MODEL_NAME = MODEL_FILE.replace(".joblib", "")
@@ -221,16 +239,34 @@ def classify(req: ScanRequest):
                                 "to verified institutions. That lowers the odds of a deceptive "
                                 "domain, but a compromised host is still possible, so treat the "
                                 "verdict as unverified rather than malicious."),
+        "hostile-support": ("The domain — {domain} — appears on the bundled list of domains "
+                            "reported as hostile, so the address is not shown as merely "
+                            "unverified: that list supports the accusation. It only ever supports "
+                            "an accusation the classifier has already made; it never creates one, "
+                            "and it never clears one."),
+        "hostile-overlap": (" The same domain also appears on the bundled list of domains "
+                            "reported as hostile, so the two lists disagree about it. The "
+                            "disagreement is shown rather than resolved silently in either "
+                            "direction: the accusation is not asserted, and it is not cleared."),
     }
 
     # An accusation is downgraded to "unverified" — never cleared to "legitimate" — for either of
     # two independent reasons: a curated list knows the domain, or the domain alone does not
-    # support the accusation and it rests on the shape of the address instead.
+    # support the accusation and it rests on the shape of the address instead. The bundled hostile
+    # blocklist works the other way only: it declines to weaken an accusation, and discloses
+    # itself. Where a domain sits on both a trusted list and the hostile list, the accusation is
+    # shown as unverified and the disagreement is named.
+    reg = registrable(host)
+    hostile_listed = bool(reg) and reg in HOSTILE
     accuse = verdict == "phishing"
     if accuse and known and source:
         reason, note = source, NOTE[source]
+        if hostile_listed:
+            note = note + NOTE["hostile-overlap"]
+    elif accuse and hostile_listed:
+        reason, note = None, NOTE["hostile-support"].format(domain=reg)
     elif accuse and path_driven:
-        reason, note = "domain-first", NOTE["domain-first"].format(domain=registrable(host))
+        reason, note = "domain-first", NOTE["domain-first"].format(domain=reg)
     else:
         reason, note = None, None
 
@@ -239,10 +275,12 @@ def classify(req: ScanRequest):
         "verdict": verdict,
         "reputation": {
             "known_domain": bool(known),
-            "domain": registrable(host),
+            "domain": reg,
             "list": reason,
+            "matched_list": source,
             "conflict": bool(reason is not None),
             "adjudication": "unverified" if reason is not None else None,
+            "hostile_listed": hostile_listed,
             "domain_only_probability_phishing": (None if p_domain is None
                                                  else round(p_domain * 100, 2)),
             "note": note,
@@ -270,6 +308,10 @@ def history(limit: int = 20):
             return v
         if is_allowlisted(u, ALLOW_LOOKUP):
             return "unverified"
+        if registrable(host_of(u)) in HOSTILE:
+            # The bundled hostile blocklist declines to weaken an accusation (the rule in
+            # /api/classify), so the log must show the verdict the panel showed.
+            return v
         p = domain_only_reading(u)
         return "unverified" if (p is not None and p < 0.5) else v
 
@@ -287,6 +329,7 @@ def metrics():
             "n_features": len(FEATURES),
             "allowlist_domains": len(ALLOW),
             "allowlist_operator": len(ALLOW_OPERATOR),
+            "blocklist_hostile": len(HOSTILE),
             "results": META["results"],
             "selected": SELECTED,
             "dataset": META["dataset"]}

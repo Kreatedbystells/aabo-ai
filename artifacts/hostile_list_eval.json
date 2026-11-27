@@ -1,0 +1,157 @@
+{
+ "bundled_list_domains": 112433,
+ "path_suffix": "/verify/account",
+ "seed": 42,
+ "independent_sources": [
+  {
+   "source": "Phishing.Database",
+   "provenance": "independent aggregator; the feed the field test's 500 hostile full URLs came from",
+   "pool_domains": 3598,
+   "sample": 2000,
+   "read_legitimate_on_its_own": 343,
+   "accused_once_it_carries_a_path": 1945,
+   "weakened_by_the_domain_first_rule": 291,
+   "restored_by_bundled_list": 5,
+   "restored_pct_of_weakened": 1.72,
+   "restored_pct_of_sample": 0.25,
+   "examples": [
+    {
+     "host": "0ffr.com",
+     "bare_pct": 5.41,
+     "with_path_pct": 81.56,
+     "on_bundled_list": false
+    },
+    {
+     "host": "kelachandraply.com",
+     "bare_pct": 37.98,
+     "with_path_pct": 89.18,
+     "on_bundled_list": false
+    },
+    {
+     "host": "1000lbkatana.com",
+     "bare_pct": 19.4,
+     "with_path_pct": 92.5,
+     "on_bundled_list": false
+    },
+    {
+     "host": "36voicemail.com",
+     "bare_pct": 6.39,
+     "with_path_pct": 85.5,
+     "on_bundled_list": false
+    },
+    {
+     "host": "900empalizaren.sa.com",
+     "bare_pct": 37.23,
+     "with_path_pct": 99.0,
+     "on_bundled_list": false
+    },
+    {
+     "host": "webdevonline.net",
+     "bare_pct": 34.57,
+     "with_path_pct": 96.33,
+     "on_bundled_list": false
+    }
+   ]
+  },
+  {
+   "source": "PhiUSIIL phishing class",
+   "provenance": "the corpus this project trains on; independent of both blocklists, but present in training data",
+   "pool_domains": 132183,
+   "sample": 2000,
+   "read_legitimate_on_its_own": 1636,
+   "accused_once_it_carries_a_path": 1870,
+   "weakened_by_the_domain_first_rule": 1506,
+   "restored_by_bundled_list": 0,
+   "restored_pct_of_weakened": 0.0,
+   "restored_pct_of_sample": 0.0,
+   "examples": [
+    {
+     "host": "kingslynncornexchange.co.uk",
+     "bare_pct": 9.68,
+     "with_path_pct": 98.81,
+     "on_bundled_list": false
+    },
+    {
+     "host": "elliejayjewels.com",
+     "bare_pct": 37.98,
+     "with_path_pct": 89.18,
+     "on_bundled_list": false
+    },
+    {
+     "host": "celticcastles.com",
+     "bare_pct": 41.92,
+     "with_path_pct": 98.5,
+     "on_bundled_list": false
+    },
+    {
+     "host": "cmtausa.org",
+     "bare_pct": 27.8,
+     "with_path_pct": 84.92,
+     "on_bundled_list": false
+    },
+    {
+     "host": "maif.fr",
+     "bare_pct": 2.53,
+     "with_path_pct": 90.5,
+     "on_bundled_list": false
+    },
+    {
+     "host": "thesoulmedic.com",
+     "bare_pct": 34.57,
+     "with_path_pct": 96.33,
+     "on_bundled_list": false
+    }
+   ]
+  }
+ ],
+ "coverage_of_itself": {
+  "source": "Phishing Army (the bundled list's own source)",
+  "provenance": "coverage-of-itself: this sample supplied the bundled list, so a high figure is arithmetic, not evidence",
+  "pool_domains": 112444,
+  "sample": 2000,
+  "read_legitimate_on_its_own": 807,
+  "accused_once_it_carries_a_path": 1980,
+  "weakened_by_the_domain_first_rule": 788,
+  "restored_by_bundled_list": 788,
+  "restored_pct_of_weakened": 100.0,
+  "restored_pct_of_sample": 39.4,
+  "examples": [
+   {
+    "host": "rozvaxis.net",
+    "bare_pct": 24.01,
+    "with_path_pct": 96.79,
+    "on_bundled_list": true
+   },
+   {
+    "host": "glovonetwork.com",
+    "bare_pct": 34.57,
+    "with_path_pct": 96.33,
+    "on_bundled_list": true
+   },
+   {
+    "host": "aerdeck.info",
+    "bare_pct": 24.01,
+    "with_path_pct": 96.79,
+    "on_bundled_list": true
+   },
+   {
+    "host": "erisiserpe.store",
+    "bare_pct": 34.57,
+    "with_path_pct": 96.33,
+    "on_bundled_list": true
+   },
+   {
+    "host": "ilovegeniunes.workers.dev",
+    "bare_pct": 7.6,
+    "with_path_pct": 99.26,
+    "on_bundled_list": true
+   },
+   {
+    "host": "verizondrift.com",
+    "bare_pct": 34.57,
+    "with_path_pct": 96.33,
+    "on_bundled_list": true
+   }
+  ]
+ }
+}
