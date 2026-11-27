@@ -267,7 +267,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.14);padding:16px 0 34px;
 
     <section class="hero">
       <div class="kicker">
-        <span>URL analysis</span><span>no page fetched</span><span>nothing tracked</span>
+        <span>URL analysis</span><span>no page fetched</span><span>no third parties</span>
       </div>
       <h1>Read a link <em>before</em> you trust it.</h1>
       <p>Paste an address. The classifier reads the structure of the URL itself — never the page behind
@@ -291,7 +291,7 @@ footer .base{border-top:1px solid rgba(255,255,255,.14);padding:16px 0 34px;
       <div class="chips">
         <span class="cue">Try</span>
         <a class="chip" data-u="https://www.gtbank.com/personal-banking">gtbank.com <em>a real bank</em></a>
-        <a class="chip" data-u="http://aacworks.com/wp-admin/images/system/template/verify.php">aacworks.com <em>on a blocklist</em></a>
+        <a class="chip" data-u="http://aacworks.com/wp-admin/images/system/template/verify.php">aacworks.com <em>a phishing URL from a feed</em></a>
         <a class="chip" data-u="https://www.jumia.com.ng/phones-tablets/">jumia.com.ng <em>local retailer</em></a>
       </div>
     </section>
@@ -321,13 +321,19 @@ footer .base{border-top:1px solid rgba(255,255,255,.14);padding:16px 0 34px;
         <p><b>Aabo AI</b> classifies a web address from sixteen features of the URL string — its length,
            its depth, its path, its tokens — computed from the string alone, with no request to the address itself.</p>
         <p>No page behind the link is ever fetched, here or by the service that scores it, and the address is
-           sent to no third party. Every scan is written to the log below.</p>
+           sent to no third party. Scoring happens on this site's own server — the model does not run in your
+           browser — and each scan is written to the log below. On the hosted copy that log sits on the
+           instance serving you and is cleared when it restarts, so it is not a durable record.</p>
+        <p>The site also carries a bundled blocklist of 112,433 domains reported as hostile. It can only
+           support an accusation the classifier has already made: it never creates one, and it never clears
+           one. Where a trusted list and that list disagree about the same domain, the verdict is shown as
+           unverified and the disagreement is named.</p>
       </div>
       <div>
         <h3>How far to trust it</h3>
         <p>Deployed model <b class="num" id="foot-model">rf-v2</b>, a Random Forest over 235,370 labelled URLs.
            In-dataset accuracy <b class="num">95.7%</b>; accuracy on unseen addresses from independent
-           sources <b class="num">88.4%</b>, rising to <b class="num">95.5%</b> once known domains are accounted for — an upper bound that resolves every conflict in favour of the legitimate label, on a test set in which most legitimate addresses are bare domain names from the same collection.</p>
+           sources <b class="num">88.4%</b>, rising to <b class="num">95.5%</b> (best case) once known domains are accounted for — an upper bound that resolves every conflict in favour of the legitimate label, on a test set in which most legitimate addresses are bare domain names from the same collection.</p>
         <p>Legitimate URLs that carry a path are still accused <b class="num">41.6%</b> of the time. A verdict
            is decision support, never a guarantee.</p>
       </div>
@@ -567,7 +573,7 @@ async function loadLog(){
     const d = await (await fetch('/api/history?limit=6')).json();
     if (!d.count) return;
     $('#logwrap').style.display = 'block';
-    $('#logmeta').textContent = d.count + ' scans stored locally';
+    $('#logmeta').textContent = d.count + ' scans in this log';
     $('#log').innerHTML = d.records.map(x => `
       <tr><td>${String(x.scan_id).padStart(3,'0')}</td>
           <td class="url" title="${x.url}">${x.url}</td>
