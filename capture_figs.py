@@ -11,6 +11,17 @@ below is the state a figure in Chapter Four asserts, in the order that makes the
   005  chairdoctorng.com/services                 unverified - operator list    (log row only)
   006  gtbank.com/personal-banking                legitimate (bare host)        ss_bare_host_fixed
   007  aldi.nivdostore.shop/verify/account        unverified - domain-first     ss_domain_first
+  008  (empty field)                              landing state                 ss_landing
+
+Row 008 is captured last, with the field cleared, so the landing figure shows the scan log the
+replay has built up behind it. It is here because it is the figure whose wording goes stale most
+easily: it shows the masthead, the badge row and the footer, so any change to those three must
+re-run this script.
+
+`ss_false_positive.png` is deliberately NOT captured here and must never be re-shot: it is the
+record of what the first-generation model (rf-v1) displayed for a well-known legitimate login page,
+taken from a build that is no longer deployed, and Chapter Four cites it as historical evidence
+rather than as the current interface. Its caption says so.
 
 Row 007 is a hostile shape whose *domain* reads as legitimate on its own, so the domain-first rule
 fires. It is not on the bundled hostile blocklist, which is deliberate: a listed domain would take
@@ -68,4 +79,23 @@ for url, name in PLAN:
                              capture_output=True, text=True).stdout
         dims = " ".join(x.split(": ")[1] for x in out.strip().splitlines()[1:])
         print(f"      saved {name}.png  {dims}  (h_css={h})")
+# Row 008: the landing state. Clear the field, let the normalisation hint disappear, and capture
+# the whole page — masthead, badge row, specimens, the log the replay built, and the footer.
+js("""(() => {
+  const i = document.querySelector('input#url');
+  i.value = '';
+  i.dispatchEvent(new Event('input', {bubbles: true}));
+  i.blur();
+  return true;
+})()""")
+time.sleep(1.5)
+h = js("(() => Math.ceil(document.documentElement.scrollHeight))()")
+shot = cdp("Page.captureScreenshot", format="png", captureBeyondViewport=True,
+           clip={"x": 0, "y": 0, "width": 1180, "height": h, "scale": 1})
+path = f"{FIGS}/ss_landing.png"
+open(path, "wb").write(base64.b64decode(shot["data"]))
+out = subprocess.run(["sips", "-g", "pixelWidth", "-g", "pixelHeight", path],
+                     capture_output=True, text=True).stdout
+dims = " ".join(x.split(": ")[1] for x in out.strip().splitlines()[1:])
+print(f"      saved ss_landing.png  {dims}  (h_css={h})")
 print("done")
