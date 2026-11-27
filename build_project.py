@@ -21,7 +21,7 @@ import os, re, sys, glob
 import docx
 from docx import Document
 from docx.shared import Pt, Cm, RGBColor
-from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK, WD_TAB_ALIGNMENT
 from docx.enum.style import WD_STYLE_TYPE
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.section import WD_SECTION
@@ -123,6 +123,110 @@ def collect(blocks):
     tabs = [b[1] for b in blocks if b[0] == "tablecap"]
     return figs, tabs
 
+
+# ---------------------------------------------------------------- table of contents
+# Entries are registered while the document is written, in document order. Their page
+# numbers are read back from a render of that same document (toc_pages.py) and written
+# in as text inside a PAGEREF field, so the number is visible in any viewer -- a field
+# with no cached result shows nothing where fields are never refreshed -- while Word can
+# still update it. Layout follows the department exemplar: a right-aligned "Page" column
+# head, then one line per entry, tabbed to the folio, no dot leaders.
+TOC_ENTRIES = []      # [{"label","level","search","bookmark","par"}]
+TOC_ANCHOR = []       # the TABLE OF CONTENTS heading paragraph
+TOC_STYLE = (0, 1, 2)  # front matter, chapter, section
+_BM_ID = [9000]
+
+
+def toc_mark(label, level, search, par):
+    """Register one TOC entry and bookmark the paragraph it points at."""
+    name = "_Toc%04d" % (9000 + len(TOC_ENTRIES))
+    start = OxmlElement("w:bookmarkStart")
+    start.set(qn("w:id"), str(_BM_ID[0])); start.set(qn("w:name"), name)
+    end = OxmlElement("w:bookmarkEnd"); end.set(qn("w:id"), str(_BM_ID[0]))
+    _BM_ID[0] += 1
+    par._p.insert(0, start)
+    par._p.append(end)
+    TOC_ENTRIES.append({"label": label.strip(), "level": level,
+                        "search": (search or label).strip(), "bookmark": name})
+
+
+def _page_map():
+    path = os.path.join(HERE, "artifacts", "toc_pages.json")
+    if os.path.exists(path):
+        import json
+        with open(path, encoding="utf-8") as fh:
+            return json.load(fh)
+    return {}
+
+
+def _folio_par(p, label, number, bold):
+    """One table of contents line: the entry, a tab out to the folio column, the folio.
+
+    The folio is written as plain text. The numbers come from a render of this same
+    document (toc_pages.py), and a field would be recalculated to the page's ordinal by
+    whatever application opens the file next -- which reads 1, 2, 3 where the front
+    matter prints i, ii, iii. The bookmark left on the heading keeps the door open to
+    turning these back into PAGEREF fields if the department ever asks for one.
+    """
+    m = re.match(r"^(\d+(?:\.\d+)*)\s+(.*)$", label)
+    if m:                                        # a numbered section: number, tab, title
+        run = p.add_run(m.group(1)); run.bold = bold
+        p.add_run("\t")
+        run = p.add_run(m.group(2)); run.bold = bold
+    else:
+        run = p.add_run(label); run.bold = bold
+    p.add_run("\t")
+    rn = p.add_run(str(number)); rn.bold = bold
+    for r in p.runs:
+        r.font.name = "Times New Roman"
+        r.font.size = Pt(12)
+    return p
+
+
+def build_toc(doc, anchor):
+    """Write the table of contents into the document, after its own heading.
+
+    Layout is the department exemplar's, measured from it rather than eyeballed: every
+    line double-spaced like the body, bold 'Page' head and the folios standing in a
+    column that starts at the right margin and runs 1.59 cm into it, no dot leaders,
+    chapters bold with a single-spaced blank line between groups.
+    """
+    pages = _page_map()
+    width = Cm(21.0 - 2 * 2.54)
+    cur = anchor._p
+
+    def newpar(spacing=2.0):
+        p = doc.add_paragraph()
+        pf = p.paragraph_format
+        pf.line_spacing = spacing          # the exemplar's contents is double-spaced
+        pf.space_before = Pt(0)
+        pf.space_after = Pt(0)
+        # the folio column begins at the right margin and runs 1.59 cm into it, as the
+        # exemplar does; without the negative right indent Word wraps the folio instead
+        pf.right_indent = Cm(-1.59)
+        pf.tab_stops.add_tab_stop(Cm(1.27), WD_TAB_ALIGNMENT.LEFT)   # number -> title
+        pf.tab_stops.add_tab_stop(width, WD_TAB_ALIGNMENT.LEFT)      # -> folio
+        return p
+
+    def place(p):
+        nonlocal cur
+        cur.addnext(p._p)
+        cur = p._p
+        return p
+
+    head = place(newpar())
+    head.paragraph_format.left_indent = width        # "Page" stands at the right margin
+    r = head.add_run("Page"); r.bold = True
+    r.font.name = "Times New Roman"; r.font.size = Pt(12)
+
+    prev = None
+    for e in TOC_ENTRIES:
+        if e["level"] == 1 and prev is not None:
+            place(newpar(spacing=1.0))            # a blank line opens each chapter
+        bold = e["level"] == 1
+        place(_folio_par(newpar(), e["label"], pages.get(e["label"], ""), bold))
+        prev = e["level"]
+
 # ---------------------------------------------------------------- styling
 def force_font(style, name="Times New Roman", size=12, bold=None):
     style.font.name = name
@@ -205,7 +309,7 @@ def pagebreak(doc):
     doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
 
 
-def centred(doc, text, size=12, bold=True, spacing=None, after=0, style=None):
+def centred(doc, text, size=12, bold=True, spacing=None, after=0, style=None, new_page=False):
     p = doc.add_paragraph(style=style)
     r = p.add_run(text)
     r.bold = bold
@@ -213,12 +317,16 @@ def centred(doc, text, size=12, bold=True, spacing=None, after=0, style=None):
     p.alignment = CENTER
     p.paragraph_format.line_spacing = spacing if spacing else 2.0
     p.paragraph_format.space_after = Pt(after)
+    if new_page:
+        # start the page on the heading itself: a break paragraph of its own can be
+        # pushed onto a fresh page when the page before it is full, and prints blank
+        p.paragraph_format.page_break_before = True
     return p
 
 
 def front_matter(doc, figs, tabs):
     m = META
-    centred(doc, m["title"], size=18, spacing=1.5, after=24)
+    toc_mark("Title Page", 0, m["title"], centred(doc, m["title"], size=18, spacing=1.5, after=24))
     centred(doc, "BY", size=16, after=12)
     centred(doc, m["name"], size=16, after=6)
     centred(doc, m["matric"], size=16, after=36)
@@ -233,8 +341,8 @@ def front_matter(doc, figs, tabs):
     doc.add_paragraph()
     centred(doc, m["date"], size=16, spacing=1.5)
 
-    pagebreak(doc)
-    centred(doc, "DECLARATION", size=14, after=18)
+    toc_mark("Declaration", 0, "DECLARATION",
+             centred(doc, "DECLARATION", size=14, after=18, new_page=True))
     doc.add_paragraph(
         f"I hereby declare that the work presented in this project is the outcome of the research "
         f"performed by me under the supervision of {m['supervisor']}. Information derived from "
@@ -246,8 +354,8 @@ def front_matter(doc, figs, tabs):
     doc.add_paragraph(f"{m['name']}\t\t\t\t\t\t\t\tDATE")
     doc.add_paragraph("STUDENT")
 
-    pagebreak(doc)
-    centred(doc, "CERTIFICATION", size=14, after=18)
+    toc_mark("Certification", 0, "CERTIFICATION",
+             centred(doc, "CERTIFICATION", size=14, after=18, new_page=True))
     doc.add_paragraph(
         f"I certify that this project work was carried out by {m['name']} of the Department of Computer "
         f"Science with matriculation number {m['matric']} and has satisfactorily completed the "
@@ -265,16 +373,15 @@ def front_matter(doc, figs, tabs):
         doc.add_paragraph(role)
         doc.add_paragraph()
 
-    pagebreak(doc)
-    centred(doc, "DEDICATION", size=14, after=18)
+    toc_mark("Dedication", 0, "DEDICATION",
+             centred(doc, "DEDICATION", size=14, after=18, new_page=True))
     doc.add_paragraph(
         "This project work is dedicated to God Almighty, the source of the strength and clarity that "
         "sustained me throughout this programme, and to my family, whose encouragement made every long "
-        "semester possible.", style="Normal")
-    add_note(doc, "replace this dedication with your own words — 3 to 5 sentences, first person.")
+        "semester possible. Also to my friends that encouraged me to keep going.", style="Normal")
 
-    pagebreak(doc)
-    centred(doc, "ACKNOWLEDGEMENT", size=14, after=18)
+    toc_mark("Acknowledgement", 0, "ACKNOWLEDGEMENT",
+             centred(doc, "ACKNOWLEDGEMENT", size=14, after=18, new_page=True))
     doc.add_paragraph(
         "I sincerely appreciate my project supervisor, whose guidance, corrections and insistence on "
         "evidence shaped both this report and the system it describes. I am grateful to the Department of "
@@ -285,10 +392,9 @@ def front_matter(doc, figs, tabs):
         "Learning Repository, whose openly licensed data made the empirical component of this study "
         "possible, and the Anti-Phishing Working Group, whose published trend reports supplied the "
         "industry context for Chapter One.")
-    add_note(doc, "add your own acknowledgements — family, friends, colleagues, employer.")
 
-    pagebreak(doc)
-    centred(doc, "ABSTRACT", size=14, after=18)
+    toc_mark("Abstract", 0, "ABSTRACT",
+             centred(doc, "ABSTRACT", size=14, after=18, new_page=True))
     doc.add_paragraph(
         "Phishing is among the most common vectors of financial fraud, and URL-only detection is the only defence that "
         "can answer before a user clicks. This study designed, implemented and evaluated an AI-powered phishing "
@@ -311,25 +417,18 @@ def front_matter(doc, figs, tabs):
     doc.add_paragraph("Key words: phishing detection; URL classification; machine learning; Random Forest; "
                       "dataset bias; Nigerian internet users.")
 
-    pagebreak(doc)
-    centred(doc, "TABLE OF CONTENTS", size=14, after=12)
-    add_note(doc, "live Word field. Highlight it, right-click → Update Field → Update entire table once "
-                  "the document is finished. Do not type page numbers by hand.")
-    p = doc.add_paragraph()
-    fld = OxmlElement("w:fldSimple")
-    fld.set(qn("w:instr"), r'TOC \o "1-3" \h \z \u')
-    inner = OxmlElement("w:r"); t = OxmlElement("w:t")
-    t.text = "Right-click here and choose Update Field to build the Table of Contents."
-    inner.append(t); fld.append(inner); p._p.append(fld)
+    toc_par = centred(doc, "TABLE OF CONTENTS", size=14, after=0, new_page=True)
+    TOC_ANCHOR.append(toc_par)
+    toc_mark("Table of Contents", 0, "TABLE OF CONTENTS", toc_par)
 
-    pagebreak(doc)
-    centred(doc, "LIST OF TABLES", size=14, after=18)
+    toc_mark("List of Tables", 0, "LIST OF TABLES",
+             centred(doc, "LIST OF TABLES", size=14, after=18, new_page=True))
     for n, cap in enumerate(tabs, 1):
         par = doc.add_paragraph(f"Table {n}:\t{plain(cap)}")
         par.paragraph_format.line_spacing = 1.5
 
-    pagebreak(doc)
-    centred(doc, "LIST OF FIGURES", size=14, after=18)
+    toc_mark("List of Figures", 0, "LIST OF FIGURES",
+             centred(doc, "LIST OF FIGURES", size=14, after=18, new_page=True))
     for n, cap in enumerate(figs, 1):
         par = doc.add_paragraph(f"Figure {n}:\t{plain(cap)}")
         par.paragraph_format.line_spacing = 1.5
@@ -404,8 +503,8 @@ def appendix(doc):
         path = os.path.join(HERE, rel)
         if not os.path.exists(path):
             continue
-        pagebreak(doc)
-        centred(doc, title, size=14, style="Heading 1")
+        toc_mark(title, 1, title,
+                 centred(doc, title, size=14, style="Heading 1", new_page=True))
         cap = doc.add_paragraph(f"{blurb} {rel.split('/')[-1]} is reproduced in full, "
                                 f"as deployed on the day the results in Chapter Four were generated.")
         cap.paragraph_format.line_spacing = 1.5
@@ -429,7 +528,8 @@ def body(doc, blocks):
     chapter_open = False
     in_refs = False
     first_chapter = True
-    for kind, val in blocks:
+    for idx, (kind, val) in enumerate(blocks):
+        nxt = blocks[idx + 1] if idx + 1 < len(blocks) else ("", "")
         if kind == "chapter":
             in_refs = val.strip().upper().startswith("REFERENCE")
         if kind == "chapter":
@@ -437,13 +537,18 @@ def body(doc, blocks):
                 # section break: front matter carries roman folios, the body arabic ones
                 doc.add_section(WD_SECTION.NEW_PAGE)
                 first_chapter = False
+                fresh = False
             else:
-                pagebreak(doc)
+                fresh = True
             if val.upper().startswith("CHAPTER"):
-                centred(doc, val.upper(), size=14, style="Heading 1")
+                par = centred(doc, val.upper(), size=14, style="Heading 1", new_page=fresh)
+                title = nxt[1].upper() if nxt[0] == "subtitle" else ""
+                toc_mark(f"{val.upper()}: {title}" if title else val.upper(), 1,
+                         f"{val.upper()} {title}", par)
                 chapter_open = True
             else:
-                centred(doc, val.upper(), size=14, style="Heading 1")
+                par = centred(doc, val.upper(), size=14, style="Heading 1", new_page=fresh)
+                toc_mark(val.upper(), 1, val.upper(), par)
                 chapter_open = False
         elif kind == "subtitle":
             centred(doc, val.upper(), size=14, style="Heading 1")
@@ -452,6 +557,7 @@ def body(doc, blocks):
             h = doc.add_paragraph(style="Heading 2")
             r = h.add_run(f"{num}\t{title}")
             r.bold = True
+            toc_mark(f"{num} {title}", 2, f"{num} {title}", h)
         elif kind == "subsection":
             num, _, title = val.partition(" ")
             h = doc.add_paragraph(style="Heading 3")
@@ -543,7 +649,13 @@ def main():
     body(doc, blocks)
     appendix(doc)
     number_pages(doc)
+    if TOC_ANCHOR:
+        build_toc(doc, TOC_ANCHOR[0])
     doc.save(OUT)
+    import json
+    with open(os.path.join(HERE, "artifacts", "toc_meta.json"), "w", encoding="utf-8") as fh:
+        json.dump([{k: e[k] for k in ("label", "level", "search", "bookmark")} for e in TOC_ENTRIES],
+                  fh, indent=1)
     words = sum(len(plain(b[1]).split()) for b in blocks if b[0] in ("para", "bullet", "num"))
     print(f"SAVED {OUT}")
     print(f"body words: {words} | figures: {len(figs)} | tables: {len(tabs)} | files: {[os.path.basename(f) for f in files]}")

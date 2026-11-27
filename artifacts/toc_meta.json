@@ -1,0 +1,320 @@
+[
+ {
+  "label": "Title Page",
+  "level": 0,
+  "search": "AI-POWERED PHISHING DETECTION AND URL CLASSIFICATION TOOL",
+  "bookmark": "_Toc9000"
+ },
+ {
+  "label": "Declaration",
+  "level": 0,
+  "search": "DECLARATION",
+  "bookmark": "_Toc9001"
+ },
+ {
+  "label": "Certification",
+  "level": 0,
+  "search": "CERTIFICATION",
+  "bookmark": "_Toc9002"
+ },
+ {
+  "label": "Dedication",
+  "level": 0,
+  "search": "DEDICATION",
+  "bookmark": "_Toc9003"
+ },
+ {
+  "label": "Acknowledgement",
+  "level": 0,
+  "search": "ACKNOWLEDGEMENT",
+  "bookmark": "_Toc9004"
+ },
+ {
+  "label": "Abstract",
+  "level": 0,
+  "search": "ABSTRACT",
+  "bookmark": "_Toc9005"
+ },
+ {
+  "label": "Table of Contents",
+  "level": 0,
+  "search": "TABLE OF CONTENTS",
+  "bookmark": "_Toc9006"
+ },
+ {
+  "label": "List of Tables",
+  "level": 0,
+  "search": "LIST OF TABLES",
+  "bookmark": "_Toc9007"
+ },
+ {
+  "label": "List of Figures",
+  "level": 0,
+  "search": "LIST OF FIGURES",
+  "bookmark": "_Toc9008"
+ },
+ {
+  "label": "CHAPTER ONE: INTRODUCTION",
+  "level": 1,
+  "search": "CHAPTER ONE INTRODUCTION",
+  "bookmark": "_Toc9009"
+ },
+ {
+  "label": "1.1 Background to the Study",
+  "level": 2,
+  "search": "1.1 Background to the Study",
+  "bookmark": "_Toc9010"
+ },
+ {
+  "label": "1.2 Statement of the Problem",
+  "level": 2,
+  "search": "1.2 Statement of the Problem",
+  "bookmark": "_Toc9011"
+ },
+ {
+  "label": "1.3 Aim and Objectives",
+  "level": 2,
+  "search": "1.3 Aim and Objectives",
+  "bookmark": "_Toc9012"
+ },
+ {
+  "label": "1.4 Research Questions",
+  "level": 2,
+  "search": "1.4 Research Questions",
+  "bookmark": "_Toc9013"
+ },
+ {
+  "label": "1.5 Significance of the Study",
+  "level": 2,
+  "search": "1.5 Significance of the Study",
+  "bookmark": "_Toc9014"
+ },
+ {
+  "label": "1.6 Scope of the Study",
+  "level": 2,
+  "search": "1.6 Scope of the Study",
+  "bookmark": "_Toc9015"
+ },
+ {
+  "label": "1.7 Methodology",
+  "level": 2,
+  "search": "1.7 Methodology",
+  "bookmark": "_Toc9016"
+ },
+ {
+  "label": "1.8 Theoretical Framework",
+  "level": 2,
+  "search": "1.8 Theoretical Framework",
+  "bookmark": "_Toc9017"
+ },
+ {
+  "label": "1.9 Definition of Terms",
+  "level": 2,
+  "search": "1.9 Definition of Terms",
+  "bookmark": "_Toc9018"
+ },
+ {
+  "label": "1.10 Organisation of the Study",
+  "level": 2,
+  "search": "1.10 Organisation of the Study",
+  "bookmark": "_Toc9019"
+ },
+ {
+  "label": "CHAPTER TWO: LITERATURE REVIEW",
+  "level": 1,
+  "search": "CHAPTER TWO LITERATURE REVIEW",
+  "bookmark": "_Toc9020"
+ },
+ {
+  "label": "2.1 Conceptual Review",
+  "level": 2,
+  "search": "2.1 Conceptual Review",
+  "bookmark": "_Toc9021"
+ },
+ {
+  "label": "2.2 Review of Related Systems (Case Studies)",
+  "level": 2,
+  "search": "2.2 Review of Related Systems (Case Studies)",
+  "bookmark": "_Toc9022"
+ },
+ {
+  "label": "2.3 Review of Related Empirical Studies",
+  "level": 2,
+  "search": "2.3 Review of Related Empirical Studies",
+  "bookmark": "_Toc9023"
+ },
+ {
+  "label": "2.4 Theoretical Framework",
+  "level": 2,
+  "search": "2.4 Theoretical Framework",
+  "bookmark": "_Toc9024"
+ },
+ {
+  "label": "2.5 Summary of Literature Review and Research Gap",
+  "level": 2,
+  "search": "2.5 Summary of Literature Review and Research Gap",
+  "bookmark": "_Toc9025"
+ },
+ {
+  "label": "CHAPTER THREE: METHODOLOGY",
+  "level": 1,
+  "search": "CHAPTER THREE METHODOLOGY",
+  "bookmark": "_Toc9026"
+ },
+ {
+  "label": "3.1 System Analysis",
+  "level": 2,
+  "search": "3.1 System Analysis",
+  "bookmark": "_Toc9027"
+ },
+ {
+  "label": "3.2 System Design",
+  "level": 2,
+  "search": "3.2 System Design",
+  "bookmark": "_Toc9028"
+ },
+ {
+  "label": "3.3 Database Design",
+  "level": 2,
+  "search": "3.3 Database Design",
+  "bookmark": "_Toc9029"
+ },
+ {
+  "label": "3.4 Machine Learning Model Design",
+  "level": 2,
+  "search": "3.4 Machine Learning Model Design",
+  "bookmark": "_Toc9030"
+ },
+ {
+  "label": "CHAPTER FOUR: SYSTEM IMPLEMENTATION, RESULTS AND DISCUSSION",
+  "level": 1,
+  "search": "CHAPTER FOUR SYSTEM IMPLEMENTATION, RESULTS AND DISCUSSION",
+  "bookmark": "_Toc9031"
+ },
+ {
+  "label": "4.1 Introduction",
+  "level": 2,
+  "search": "4.1 Introduction",
+  "bookmark": "_Toc9032"
+ },
+ {
+  "label": "4.2 Implementation of the Machine Learning Component",
+  "level": 2,
+  "search": "4.2 Implementation of the Machine Learning Component",
+  "bookmark": "_Toc9033"
+ },
+ {
+  "label": "4.3 Implementation of the Web Application",
+  "level": 2,
+  "search": "4.3 Implementation of the Web Application",
+  "bookmark": "_Toc9034"
+ },
+ {
+  "label": "4.4 Model Evaluation Results",
+  "level": 2,
+  "search": "4.4 Model Evaluation Results",
+  "bookmark": "_Toc9035"
+ },
+ {
+  "label": "4.5 Generalisation Experiments",
+  "level": 2,
+  "search": "4.5 Generalisation Experiments",
+  "bookmark": "_Toc9036"
+ },
+ {
+  "label": "4.6 Corrective Training and the Reputation Layer",
+  "level": 2,
+  "search": "4.6 Corrective Training and the Reputation Layer",
+  "bookmark": "_Toc9037"
+ },
+ {
+  "label": "4.7 Discussion of Findings",
+  "level": 2,
+  "search": "4.7 Discussion of Findings",
+  "bookmark": "_Toc9038"
+ },
+ {
+  "label": "4.8 Functional Testing",
+  "level": 2,
+  "search": "4.8 Functional Testing",
+  "bookmark": "_Toc9039"
+ },
+ {
+  "label": "4.9 Summary",
+  "level": 2,
+  "search": "4.9 Summary",
+  "bookmark": "_Toc9040"
+ },
+ {
+  "label": "CHAPTER FIVE: SUMMARY, CONCLUSION AND RECOMMENDATIONS",
+  "level": 1,
+  "search": "CHAPTER FIVE SUMMARY, CONCLUSION AND RECOMMENDATIONS",
+  "bookmark": "_Toc9041"
+ },
+ {
+  "label": "5.1 Introduction",
+  "level": 2,
+  "search": "5.1 Introduction",
+  "bookmark": "_Toc9042"
+ },
+ {
+  "label": "5.2 Summary of the Study",
+  "level": 2,
+  "search": "5.2 Summary of the Study",
+  "bookmark": "_Toc9043"
+ },
+ {
+  "label": "5.3 Summary of Findings",
+  "level": 2,
+  "search": "5.3 Summary of Findings",
+  "bookmark": "_Toc9044"
+ },
+ {
+  "label": "5.4 Conclusion",
+  "level": 2,
+  "search": "5.4 Conclusion",
+  "bookmark": "_Toc9045"
+ },
+ {
+  "label": "5.5 Limitations of the Study",
+  "level": 2,
+  "search": "5.5 Limitations of the Study",
+  "bookmark": "_Toc9046"
+ },
+ {
+  "label": "5.6 Recommendations",
+  "level": 2,
+  "search": "5.6 Recommendations",
+  "bookmark": "_Toc9047"
+ },
+ {
+  "label": "5.7 Suggestions for Further Research",
+  "level": 2,
+  "search": "5.7 Suggestions for Further Research",
+  "bookmark": "_Toc9048"
+ },
+ {
+  "label": "5.8 Contribution to Knowledge",
+  "level": 2,
+  "search": "5.8 Contribution to Knowledge",
+  "bookmark": "_Toc9049"
+ },
+ {
+  "label": "REFERENCES",
+  "level": 1,
+  "search": "REFERENCES",
+  "bookmark": "_Toc9050"
+ },
+ {
+  "label": "APPENDIX A",
+  "level": 1,
+  "search": "APPENDIX A",
+  "bookmark": "_Toc9051"
+ },
+ {
+  "label": "APPENDIX B",
+  "level": 1,
+  "search": "APPENDIX B",
+  "bookmark": "_Toc9052"
+ }
+]

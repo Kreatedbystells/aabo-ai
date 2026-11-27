@@ -262,12 +262,12 @@ footer .base{border-top:1px solid rgba(255,255,255,.14);padding:16px 0 34px;
     <header class="masthead">
       <a class="wordmark" href="/"><span class="nm">Aabo</span><span class="ai">AI</span></a>
       <div class="tag">reads the address,<br>not the page</div>
-      <div class="status"><i class="dot" aria-hidden="true"></i>model <b id="mv">rf-v2</b> · <b id="nf">16</b> features · offline</div>
+      <div class="status"><i class="dot" aria-hidden="true"></i>model <b id="mv">rf-v2</b> · <b id="nf">16</b> features · URL-only</div>
     </header>
 
     <section class="hero">
       <div class="kicker">
-        <span>URL analysis</span><span>no page fetched</span><span>nothing leaves this machine</span>
+        <span>URL analysis</span><span>no page fetched</span><span>nothing tracked</span>
       </div>
       <h1>Read a link <em>before</em> you trust it.</h1>
       <p>Paste an address. The classifier reads the structure of the URL itself — never the page behind
@@ -319,14 +319,15 @@ footer .base{border-top:1px solid rgba(255,255,255,.14);padding:16px 0 34px;
       <div>
         <h3>What this is</h3>
         <p><b>Aabo AI</b> classifies a web address from sixteen features of the URL string — its length,
-           its depth, its path, its tokens — computed here, in memory, with no network request of any kind.</p>
-        <p>No page is fetched and no address is sent to a third party. Every scan is written to a local log.</p>
+           its depth, its path, its tokens — computed from the string alone, with no request to the address itself.</p>
+        <p>No page behind the link is ever fetched, here or by the service that scores it, and the address is
+           sent to no third party. Every scan is written to the log below.</p>
       </div>
       <div>
         <h3>How far to trust it</h3>
         <p>Deployed model <b class="num" id="foot-model">rf-v2</b>, a Random Forest over 235,370 labelled URLs.
            In-dataset accuracy <b class="num">95.7%</b>; accuracy on unseen addresses from independent
-           sources <b class="num">88.4%</b>, rising to <b class="num">95.5%</b> once known domains are accounted for.</p>
+           sources <b class="num">88.4%</b>, rising to <b class="num">95.5%</b> once known domains are accounted for — an upper bound that resolves every conflict in favour of the legitimate label, on a test set in which most legitimate addresses are bare domain names from the same collection.</p>
         <p>Legitimate URLs that carry a path are still accused <b class="num">41.6%</b> of the time. A verdict
            is decision support, never a guarantee.</p>
       </div>
